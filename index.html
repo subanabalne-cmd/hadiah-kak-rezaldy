@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terima Kasih Kak Rezaldy! ✨ Hadiah Kenangan MOB</title>
+  <meta name="description" content="Website kenangan dan apresiasi penuh cinta untuk Kak Rezaldy, Mahasiswa Pendamping MOB terbaik dari kami 17 anak bimbingan." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #FCF8F2;
+      --bg-card: #FFFFFF;
+      --pastel-peach: #FFD1BA;
+      --pastel-coral: #FF7B72;
+      --pastel-yellow: #FFE89E;
+      --pastel-mint: #C1F0DB;
+      --pastel-sky: #CBE6FF;
+      --pastel-lavender: #EADCF8;
+      --pastel-pink: #FFD3E2;
+      --text-main: #2C3E50;
+      --text-muted: #6C7A89;
+      --gold-accent: #F5A623;
+      --border-color: #EFE6D8;
+      --shadow-soft: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+      --shadow-hover: 0 20px 30px -10px rgba(0,0,0,0.1), 0 10px 15px -5px rgba(0,0,0,0.05);
+      --font-display: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-hand: 'Caveat', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 209, 186, 0.4) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(203, 230, 255, 0.35) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(234, 220, 248, 0.4) 0%, transparent 35%),
+        radial-gradient(circle at 10% 75%, rgba(193, 240, 219, 0.35) 0%, transparent 30%);
+      background-attachment: fixed;
+    }
+
+    /* Floating Doodle Background */
+    .doodle-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .doodle {
+      position: absolute;
+      opacity: 0.25;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(8deg); }
+    }
+
+    /* Envelope Opening Overlay */
+    #envelope-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #FFF6EE 0%, #FFEBE0 50%, #F8E5FF 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #envelope-screen.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-box {
+      background: white;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 28px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(255, 123, 114, 0.25), 0 0 0 1px rgba(0,0,0,0.03);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .envelope-box:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .envelope-icon-wrap {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #FFE89E, #FFD1BA);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 12px 25px -6px rgba(245, 166, 35, 0.4);
+      animation: pulse-badge 2s infinite;
+    }
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .envelope-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: #2C3E50;
+      margin-bottom: 8px;
+    }
+    .envelope-subtitle {
+      font-size: 15px;
+      color: #7F8C8D;
+      margin-bottom: 24px;
+    }
+    .envelope-btn {
+      background: linear-gradient(135deg, #FF7B72, #FF9776);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 18px;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px -5px rgba(255, 123, 114, 0.5);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .envelope-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 28px -5px rgba(255, 123, 114, 0.6);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top Action Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: var(--shadow-soft);
+    }
+    .brand-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: #E65A4F;
+    }
+    .control-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-pill {
+      background: white;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-pill:hover {
+      background: #FFF3EB;
+      border-color: var(--pastel-peach);
+      transform: translateY(-1px);
+    }
+    .btn-pill.active {
+      background: #FF7B72;
+      color: white;
+      border-color: #FF7B72;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 20px 10px 40px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFE89E;
+      color: #8C5B00;
+      font-family: var(--font-display);
+      font-size: 14px;
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 10px rgba(245, 166, 35, 0.15);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5.5vw, 56px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #2D3142;
+      margin-bottom: 14px;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(120deg, #FF7B72 0%, #FFA07A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      position: relative;
+    }
+    .hero-desc {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    /* Stat Pills */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 45px;
+    }
+    .stat-chip {
+      background: white;
+      padding: 10px 22px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.03);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stat-chip span.emoji {
+      font-size: 18px;
+    }
+
+    /* CENTER STAGE: REZALDY CARD */
+    .center-stage-wrap {
+      margin-bottom: 65px;
+      position: relative;
+    }
+    .center-stage-title-wrap {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .stage-pill {
+      background: linear-gradient(135deg, #FFD1BA, #FFE89E);
+      color: #8C4300;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(245, 166, 35, 0.2);
+    }
+    
+    .rezaldy-card {
+      background: white;
+      border-radius: 32px;
+      border: 3px solid #FFE3C8;
+      box-shadow: 0 25px 60px -15px rgba(255, 123, 114, 0.2), 0 10px 25px -5px rgba(0,0,0,0.04);
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .rezaldy-card:hover {
+      transform: translateY(-4px);
+    }
+    .rezaldy-card::before {
+      content: "MAPING KEBANGGAAN";
+      position: absolute;
+      top: 18px;
+      right: -55px;
+      transform: rotate(38deg);
+      background: #FF7B72;
+      color: white;
+      font-size: 11px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      padding: 4px 55px;
+      box-shadow: 0 4px 10px rgba(255, 123, 114, 0.3);
+      z-index: 2;
+    }
+
+    /* Polaroid Styles */
+    .polaroid-frame {
+      background: white;
+      padding: 14px 14px 26px;
+      box-shadow: 0 12px 28px -6px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
+      border-radius: 6px;
+      position: relative;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .polaroid-frame .washi-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 100px;
+      height: 24px;
+      background: rgba(255, 216, 102, 0.75);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      z-index: 3;
+      clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
+    }
+    .polaroid-img-box {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #F4EBE1;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+    }
+    .polaroid-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .polaroid-img-box:hover img {
+      transform: scale(1.05);
+    }
+    .polaroid-caption {
+      font-family: var(--font-hand);
+      font-size: 24px;
+      color: #34495E;
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .rezaldy-info h3 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: #2C3E50;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .rezaldy-role-tag {
+      background: #FFE89E;
+      color: #8C5500;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: var(--font-body);
+    }
+    .rezaldy-desc {
+      font-size: 16px;
+      color: #576574;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .rezaldy-quote-box {
+      background: #FFF7F0;
+      border-left: 4px solid #FF7B72;
+      padding: 16px 20px;
+      border-radius: 0 16px 16px 0;
+      font-style: italic;
+      color: #485460;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    /* Appreciation Buttons for Rezaldy */
+    .rezaldy-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-heart-burst {
+      background: linear-gradient(135deg, #FF7B72, #FF5252);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px -4px rgba(255, 123, 114, 0.4);
+      transition: all 0.2s;
+    }
+    .btn-heart-burst:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 25px -4px rgba(255, 123, 114, 0.5);
+    }
+    .btn-heart-burst:active {
+      transform: scale(0.96);
+    }
+    .btn-secondary-action {
+      background: #F4EBE1;
+      color: #4B5563;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-secondary-action:hover {
+      background: #EADBC8;
+    }
+
+    /* SECTION 17 FRIENDS */
+    .section-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 4vw, 36px);
+      color: #2D3142;
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* Filter & Search Controls */
+    .gallery-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 360px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 12px 18px 12px 42px;
+      border-radius: 50px;
+      border: 1px solid var(--border-color);
+      background: white;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-soft);
+    }
+    .search-box input:focus {
+      border-color: #FF7B72;
+      box-shadow: 0 0 0 3px rgba(255, 123, 114, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #95A5A6;
+    }
+
+    /* Grid of 17 Members */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .member-polaroid {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 16px 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .member-polaroid:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+      z-index: 5;
+    }
+
+    /* Slight playful tilt */
+    .member-polaroid:nth-child(3n+1) { transform: rotate(-1.2deg); }
+    .member-polaroid:nth-child(3n+2) { transform: rotate(1deg); }
+    .member-polaroid:nth-child(3n+3) { transform: rotate(-0.8deg); }
+    .member-polaroid:hover {
+      transform: translateY(-8px) rotate(0deg) scale(1.02) !important;
+    }
+
+    .card-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75px;
+      height: 20px;
+      z-index: 2;
+      opacity: 0.85;
+    }
+    .tape-pink { background: rgba(255, 211, 226, 0.8); }
+    .tape-mint { background: rgba(193, 240, 219, 0.8); }
+    .tape-yellow { background: rgba(255, 232, 158, 0.8); }
+    .tape-sky { background: rgba(203, 230, 255, 0.8); }
+    .tape-lavender { background: rgba(234, 220, 248, 0.8); }
+
+    .member-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      background: #F9F5F0;
+      overflow: hidden;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .member-number-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .member-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .member-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .member-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: #2D3142;
+      font-weight: 600;
+    }
+    .member-role {
+      font-size: 11px;
+      color: #7F8C8D;
+      background: #F4EBE1;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .member-preview-quote {
+      font-family: var(--font-hand);
+      font-size: 19px;
+      line-height: 1.35;
+      color: #4A5568;
+      margin: 8px 0 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+    }
+    .member-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed #E2E8F0;
+      padding-top: 10px;
+      margin-top: auto;
+    }
+    .read-more-btn {
+      color: #FF7B72;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .reaction-pill {
+      font-size: 12px;
+      color: #95A5A6;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* MODAL DETAIL PESAN */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 62, 80, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-card {
+      background: white;
+      border-radius: 28px;
+      max-width: 580px;
+      width: 100%;
+      padding: 35px 30px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+      transform: scale(0.9) translateY(20px);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-backdrop.active .modal-card {
+      transform: scale(1) translateY(0);
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #F1F2F6;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      color: #576574;
+      transition: background 0.2s;
+    }
+    .modal-close:hover {
+      background: #E4E7EB;
+      color: #2C3E50;
+    }
+    .modal-photo-wrap {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      background: #F4EBE1;
+    }
+    .modal-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .modal-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .modal-header h3 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: #2D3142;
+    }
+    .modal-header p {
+      font-size: 14px;
+      color: #7F8C8D;
+    }
+    .modal-letter-content {
+      background: #FFFDF9;
+      border: 1px dashed #E2D9C8;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .modal-letter-content p {
+      font-family: var(--font-hand);
+      font-size: 23px;
+      line-height: 1.5;
+      color: #2C3E50;
+      white-space: pre-line;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* SLIDESHOW / STORY OVERLAY */
+    #story-overlay {
+      position: fixed;
+      inset: 0;
+      background: #1A1A24;
+      z-index: 10001;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    #story-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .story-container {
+      max-width: 480px;
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 28px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .story-progress-bars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .story-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .story-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #FF7B72;
+      transition: width 0.1s linear;
+    }
+    .story-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.06);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .story-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .story-nav-btn {
+      background: #F1F2F6;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* EDIT DRAWER / CUSTOMIZER */
+    #edit-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 10002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    #edit-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .edit-box {
+      background: white;
+      max-width: 650px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 24px;
+      padding: 30px;
+    }
+    .edit-box h3 {
+      font-family: var(--font-display);
+      margin-bottom: 12px;
+    }
+    .edit-instruction {
+      font-size: 14px;
+      color: #636e72;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      background: #FFF8E7;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #FFEAA7;
+    }
+    .edit-field-group {
+      margin-bottom: 18px;
+    }
+    .edit-field-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .edit-field-group input, .edit-field-group textarea, .edit-field-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #DDD;
+      font-family: inherit;
+    }
+
+    /* Interactive Hearts Generator */
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 99999;
+      font-size: 24px;
+      animation: float-up-fade 1.5s forwards ease-out;
+    }
+    @keyframes float-up-fade {
+      0% { opacity: 1; transform: translateY(0) scale(0.6); }
+      50% { transform: translateY(-70px) scale(1.2); }
+      100% { opacity: 0; transform: translateY(-140px) scale(1.5); }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      color: #7F8C8D;
+      font-size: 14px;
+      border-top: 1px solid var(--border-color);
+    }
+    footer .love-icon {
+      color: #FF7B72;
+      display: inline-block;
+      animation: heart-beat 1.5s infinite;
+    }
+    @keyframes heart-beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .rezaldy-card {
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+        gap: 25px;
+      }
+      .polaroid-frame {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+      .top-bar {
+        border-radius: 20px;
+        justify-content: center;
+      }
+      .control-actions {
+        justify-content: center;
+      }
+      .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Background Decorative SVGs -->
+  <div class="doodle-bg">
+    <svg class="doodle" style="top: 10%; left: 5%; width: 40px;" viewBox="0 0 24 24" fill="#FF7B72"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <svg class="doodle" style="top: 25%; right: 8%; width: 35px; animation-delay: 1.5s;" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+    <svg class="doodle" style="top: 60%; left: 8%; width: 42px; animation-delay: 2.2s;" viewBox="0 0 24 24" fill="#4ECDC4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+    <svg class="doodle" style="top: 75%; right: 6%; width: 38px; animation-delay: 3s;" viewBox="0 0 24 24" fill="#FFD1BA"><circle cx="12" cy="12" r="10"/></svg>
+  </div>
+
+  <!-- 1. ENVELOPE SCREEN (Opening Experience) -->
+  <div id="envelope-screen">
+    <div class="envelope-box" onclick="openEnvelope()">
+      <div class="envelope-icon-wrap">
+        💌
+      </div>
+      <h2 class="envelope-title">Surat Spesial Untukmu!</h2>
+      <p class="envelope-subtitle">Ada sebuah pesan penuh apresiasi & kenangan dari 17 mahasiswa bimbingan MOB untuk <strong>Kak Rezaldy</strong> ✨</p>
+      <button class="envelope-btn" type="button">
+        <span>Buka Surat Sekarang</span>
+        <span>✨</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. MAIN CONTAINER -->
+  <div class="container">
+    
+    <!-- Top Action Bar -->
+    <header class="top-bar">
+      <div class="brand-tag">
+        <span>✨</span>
+        <span>Kelompok MOB • Kenangan Bersama</span>
+      </div>
+      <div class="control-actions">
+        <button class="btn-pill" id="bgm-toggle-btn" onclick="toggleBGM()">
+          <span id="bgm-icon">🎵</span>
+          <span id="bgm-text">Putar Musik Suasana</span>
+        </button>
+        <button class="btn-pill" onclick="startStoryMode()">
+          <span>🎬</span>
+          <span>Mode Story / Slideshow</span>
+        </button>
+        <button class="btn-pill" onclick="openEditModal()">
+          <span>✏️</span>
+          <span>Edit Foto & Pesan</span>
+        </button>
+        <button class="btn-pill" onclick="openShareModal()">
+          <span>🚀</span>
+          <span>Cara Bagikan Link</span>
+        </button>
+        <button class="btn-pill active" onclick="exportCurrentHTML()" title="Unduh file HTML lengkap beserta foto dan pesan yang sudah kamu edit">
+          <span>📥</span>
+          <span>Unduh File Jadi</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span>🎓</span>
+        <span>Masa Orientasi Bersama (MOB) Universitas</span>
+      </div>
+      <h1 class="hero-title">
+        Terima Kasih, <br/>
+        <span class="highlight">Kak Rezaldy!</span> ✨
+      </h1>
+      <p class="hero-desc">
+        Dari awal hari pertama kami yang masih serba bingung dan cemas, sampai akhirnya berhasil menyelesaikan seluruh rangkaian kegiatan MOB dengan solid. Website ini adalah ungkapan terima kasih tulus dari kami semua!
+      </p>
+
+      <!-- Stat Badges -->
+      <div class="stats-row">
+        <div class="stat-chip"><span class="emoji">⭐</span> 1 Maping Terbaik</div>
+        <div class="stat-chip"><span class="emoji">👥</span> 17 Teman Bimbingan</div>
+        <div class="stat-chip"><span class="emoji">💖</span> 18 Jiwa Penuh Kenangan</div>
+        <div class="stat-chip"><span class="emoji">🏆</span> Selamanya Kompak</div>
+      </div>
+    </section>
+
+    <!-- 3. CENTER OF ATTENTION: KAK REZALDY SPOTLIGHT -->
+    <section class="center-stage-wrap">
+      <div class="center-stage-title-wrap">
+        <span class="stage-pill">🌟 Bintang Utama / Center of Attention</span>
+      </div>
+
+      <div class="rezaldy-card">
+        <!-- Polaroid Foto Rezaldy -->
+        <div class="polaroid-frame" style="transform: rotate(-1.5deg);">
+          <div class="washi-tape"></div>
+          <div class="polaroid-img-box" onclick="zoomPhoto('rezaldy')">
+            <img id="rezaldy-photo" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><rect width='400' height='400' fill='%23FFE3C8'/><circle cx='200' cy='150' r='65' fill='%23FFB26B'/><path d='M90,340 C90,240 310,240 310,340 Z' fill='%234ECDC4'/><circle cx='180' cy='140' r='8' fill='%23333'/><circle cx='220' cy='140' r='8' fill='%23333'/><path d='M185,170 Q200,185 215,170' stroke='%23333' stroke-width='4' fill='none'/><rect x='170' y='250' width='60' height='80' rx='8' fill='%23FFEAA7'/><text x='200' y='295' font-family='Arial' font-size='12' font-weight='bold' fill='%238C5500' text-anchor='middle'>MAPING</text><text x='200' y='360' font-family='Arial' font-size='14' font-weight='bold' fill='%23555' text-anchor='middle'>Ganti dengan foto Kak Rezaldy</text></svg>" alt="Foto Kak Rezaldy" />
+          </div>
+          <div class="polaroid-caption" id="rezaldy-caption-text">Kak Rezaldy 👑</div>
+        </div>
+
+        <!-- Info & Ucapan Apresiasi -->
+        <div class="rezaldy-info">
+          <h3>
+            <span id="rezaldy-name-display">Kak Rezaldy</span>
+            <span class="rezaldy-role-tag">Mahasiswa Pendamping (MAPING)</span>
+          </h3>
+          <p class="rezaldy-desc" id="rezaldy-desc-display">
+            Terima kasih banyak sudah menjadi kakak pendamping yang luar biasa ramah, sabar membimbing, dan selalu siap sedia pas kelompok kita panik ngerjain tugas ataupun persiapan apel. Tanpa bimbingan Kak Rezaldy, masa orientasi kemarin pasti tidak akan sehangat dan sekompak ini!
+          </p>
+
+          <div class="rezaldy-quote-box">
+            "Seorang pembimbing bukan sekadar yang berjalan di depan, tapi yang memastikan tidak ada satu pun dari adik bimbingannya yang tertinggal di belakang." ✨
+          </div>
+
+          <!-- Appreciation Buttons -->
+          <div class="rezaldy-actions">
+            <button class="btn-heart-burst" onclick="sendHeartToRezaldy(event)">
+              <span>💖 Kirim Cinta & Apresiasi</span>
+              <span id="rezaldy-heart-count">128</span>
+            </button>
+            <button class="btn-secondary-action" onclick="clapForRezaldy(event)">
+              <span>👏 Tepuk Tangan</span>
+              <span id="rezaldy-clap-count">94</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. THE 17 FRIENDS / MAHASISWA BIMBINGAN -->
+    <section class="friends-section">
+      <div class="section-header">
+        <h2 class="section-title">Pesan Hangat Dari Kami Bertujuh Belas 💌</h2>
+        <p class="section-subtitle">Klik kartu masing-masing untuk membaca surat & pesan lengkap untuk Kak Rezaldy</p>
+      </div>
+
+      <!-- Controls -->
+      <div class="gallery-controls">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="member-search" placeholder="Cari nama anggota atau kata kunci pesan..." oninput="filterCards()" />
+        </div>
+        <div class="control-actions">
+          <button class="btn-pill active" onclick="setCategoryFilter('all', this)">Semua (17)</button>
+          <button class="btn-pill" onclick="setCategoryFilter('terharu', this)">Terharu & Apresiasi</button>
+          <button class="btn-pill" onclick="setCategoryFilter('lucu', this)">Kocak & Santai</button>
+        </div>
+      </div>
+
+      <!-- Polaroid Cards Grid -->
+      <div class="cards-grid" id="cards-container">
+        <!-- Generated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Dibuat dengan <span class="love-icon">❤️</span> oleh Kelompok Bimbingan Kak Rezaldy</p>
+      <p style="margin-top: 6px; font-size: 13px;">Masa Orientasi Bersama • Kenangan yang tak terlupakan ✨</p>
+    </footer>
+
+  </div>
+
+  <!-- 5. MODAL POPUP BACA PESAN LENGKAP -->
+  <div class="modal-backdrop" id="letter-modal" onclick="closeLetterModalOnBackdrop(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLetterModal()">✕</button>
+      
+      <div class="modal-photo-wrap">
+        <img id="modal-img" src="" alt="Foto" />
+      </div>
+      
+      <div class="modal-header">
+        <h3 id="modal-name">Nama Anggota</h3>
+        <p id="modal-role">Anggota Kelompok MOB</p>
+      </div>
+
+      <div class="modal-letter-content">
+        <p id="modal-message">Pesan lengkap akan tampil di sini...</p>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-pill active" onclick="likeCurrentModal()">
+          <span>❤️</span>
+          <span id="modal-like-text">Suka Pesan Ini (0)</span>
+        </button>
+        <button class="btn-pill" onclick="closeLetterModal()">
+          Tutup Surat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. STORY / SLIDESHOW OVERLAY -->
+  <div id="story-overlay">
+    <div class="story-container">
+      <button class="story-close-btn" onclick="closeStoryMode()">✕</button>
+      
+      <div class="story-progress-bars" id="story-bars">
+        <!-- Progress bars dynamically added -->
+      </div>
+
+      <div class="story-content" id="story-content">
+        <!-- Filled by JS -->
+      </div>
+
+      <div class="story-controls">
+        <button class="story-nav-btn" onclick="prevStory()">← Sebelumnya</button>
+        <button class="story-nav-btn" id="story-play-btn" onclick="toggleStoryPlay()">⏸ Pause</button>
+        <button class="story-nav-btn" onclick="nextStory()">Berikutnya →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. MODAL EDIT & GANTI FOTO / PESAN -->
+  <div id="edit-modal">
+    <div class="edit-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3>⚙️ Sesuaikan Nama, Pesan, & Foto</h3>
+        <button class="btn-pill" onclick="closeEditModal()">✕ Tutup</button>
+      </div>
+
+      <div class="edit-instruction">
+        <strong>💡 Panduan Mudah:</strong><br/>
+        Kamu bisa langsung mengganti teks pesan atau memilih file foto asli dari HP/laptop untuk masing-masing orang. Semua perubahan langsung tersimpan otomatis di browser ini!
+      </div>
+
+      <div class="edit-field-group">
+        <label>Pilih Siapa yang Mau Diedit:</label>
+        <select id="edit-person-select" onchange="loadPersonToEdit()">
+          <option value="rezaldy">⭐ Kak Rezaldy (Mahasiswa Pendamping)</option>
+          <!-- Friends will be appended -->
+        </select>
+      </div>
+
+      <div class="edit-field-group">
+        <label>Nama / Panggilan:</label>
+        <input type="text" id="edit-input-name" placeholder="Misal: Kak Rezaldy / Naufal" />
+      </div>
+
+      <div class="edit-field-group">
+        <label>Peran / Julukan Lucu:</label>
+        <input type="text" id="edit-input-role" placeholder="Misal: Mahasiswa Pendamping / Si Paling Santai" />
+      </div>
+
+      <div class="edit-field-group">
+        <label>Isi Pesan / Ucapan:</label>
+        <textarea id="edit-input-message" rows="4" placeholder="Tuliskan pesan apresiasi dan kesan..."></textarea>
+      </div>
+
+      <div class="edit-field-group">
+        <label>Ganti Foto (Upload dari Komputer / HP):</label>
+        <input type="file" id="edit-input-file" accept="image/*" onchange="handleImageUpload(event)" />
+        <p style="font-size: 12px; color: #888; margin-top: 4px;">Foto akan di-convert secara otomatis & tersimpan langsung di browser.</p>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 25px; flex-wrap: wrap;">
+        <button class="btn-pill active" onclick="savePersonEdit()" style="flex: 1;">
+          💾 Simpan Perubahan
+        </button>
+        <button class="btn-pill" onclick="resetToDefaults()" style="background: #FFF0F0; border-color: #FFAAAA; color: #D63031;">
+          🔄 Reset Contoh Semula
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. MODAL CARA BAGIKAN LINK / HOSTING -->
+  <div id="share-modal" class="modal-backdrop" onclick="if(event.target.id==='share-modal') closeShareModal()">
+    <div class="modal-card" style="max-width: 620px;">
+      <button class="modal-close" onclick="closeShareModal()">✕</button>
+      
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 44px; margin-bottom: 6px;">🚀</div>
+        <h3 style="font-family: var(--font-display); font-size: 24px; color: #2D3142;">Cara Membagikan Website Ini ke Kak Rezaldy</h3>
+        <p style="font-size: 14px; color: #7F8C8D;">Pilih salah satu cara termudah berikut ini agar Kak Rezaldy bisa membukanya!</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; font-size: 14px; line-height: 1.6;">
+        
+        <div style="background: #F8F9FA; padding: 16px; border-radius: 16px; border-left: 4px solid #FF7B72;">
+          <h4 style="font-size: 15px; color: #2C3E50; margin-bottom: 4px;">1. Online Gratis & Cepat via Netlify Drop (Sangat Direkomendasikan ⭐)</h4>
+          <p style="color: #636E72;">
+            Buka link <strong><a href="https://app.netlify.com/drop" target="_blank" style="color: #FF7B72; font-weight: bold;">app.netlify.com/drop</a></strong> di browser.<br/>
+            Cukup seret (drag-and-drop) folder website ini atau file <code>index.html</code>. Dalam 10 detik kamu akan langsung dapat link online aktif (contoh: <code>https://hadiah-kak-rezaldy.netlify.app</code>) yang bisa langsung di-copy dan dikirim ke Kak Rezaldy lewat WhatsApp!
+          </p>
+        </div>
+
+        <div style="background: #F8F9FA; padding: 16px; border-radius: 16px; border-left: 4px solid #4ECDC4;">
+          <h4 style="font-size: 15px; color: #2C3E50; margin-bottom: 4px;">2. Bagikan File Langsung (Tanpa Perlu Hosting)</h4>
+          <p style="color: #636E72;">
+            Klik tombol <strong>"Unduh File Jadi"</strong> di pojok kanan atas. File <code>index.html</code> yang terunduh sudah memuat semua foto dan tulisan pesanmu secara utuh. File tersebut bisa langsung kamu kirim lewat WA dokumen / Google Drive, dan Kak Rezaldy bisa membukanya langsung di Chrome/Safari HP maupun laptop.
+          </p>
+        </div>
+
+        <div style="background: #F8F9FA; padding: 16px; border-radius: 16px; border-left: 4px solid #FFE89E;">
+          <h4 style="font-size: 15px; color: #2C3E50; margin-bottom: 4px;">3. GitHub Pages / Vercel (Untuk Kamu yang Punya Akun Dev)</h4>
+          <p style="color: #636E72;">
+            Push folder ini ke repository GitHub baru, lalu aktifkan fitur GitHub Pages di tab <em>Settings → Pages</em>. Website akan langsung aktif di link domain gratis GitHub!
+          </p>
+        </div>
+
+      </div>
+
+      <div style="margin-top: 24px; text-align: center;">
+        <button class="btn-pill active" onclick="closeShareModal()" style="padding: 10px 28px;">
+          Siap, Paham! 👍
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas Engine (Embedded) -->
+  <canvas id="confetti-canvas" style="position: fixed; inset: 0; pointer-events: none; z-index: 10005;"></canvas>
+
+  <script>
+    // --- 1. DATA MASTER (17 TEMAN + REZALDY) ---
+    const DEFAULT_REZALDY = {
+      id: "rezaldy",
+      name: "Kak Rezaldy",
+      role: "Mahasiswa Pendamping (MAPING)",
+      desc: "Terima kasih banyak sudah menjadi kakak pendamping yang luar biasa ramah, sabar membimbing, dan selalu siap sedia pas kelompok kita panik ngerjain tugas ataupun persiapan apel. Tanpa bimbingan Kak Rezaldy, masa orientasi kemarin pasti tidak akan sehangat dan sekompak ini!",
+      quote: "Seorang pembimbing bukan sekadar yang berjalan di depan, tapi yang memastikan tidak ada satu pun dari adik bimbingannya yang tertinggal di belakang. ✨",
+      photo: "" // SVG fallback default
+    };
+
+    const DEFAULT_MEMBERS = [
+      {
+        id: "m1",
+        num: 1,
+        name: "Naufal",
+        role: "Si Paling Santai",
+        category: "lucu",
+        tapeColor: "tape-pink",
+        avatarBg: "%23FFD3E2",
+        message: "Makasih banyak Kak Rezaldy udah sabar banget bimbing kelompok kita! Waktu kita kelimpungan sama tugas resume buku dan yel-yel, kakak selalu santai tapi solutif banget. Sukses terus kuliah dan skripsinya ya kak!",
+        likes: 12
+      },
+      {
+        id: "m2",
+        num: 2,
+        name: "Alya",
+        role: "Si Notulen Rajin",
+        category: "terharu",
+        tapeColor: "tape-mint",
+        avatarBg: "%23C1F0DB",
+        message: "Kak Rezaldy the best maping ever! Makasih udah selalu semangatin pas kita udah mulai kena mental sama padatnya rundown acara. Terima kasih sudah selalu perhatian sama kondisi kesehatan kita semua.",
+        likes: 18
+      },
+      {
+        id: "m3",
+        num: 3,
+        name: "Dimas",
+        role: "Si Paling Telat Baris",
+        category: "lucu",
+        tapeColor: "tape-yellow",
+        avatarBg: "%23FFE89E",
+        message: "Kak Rezaldy, maafkan saya yang selalu panik lari-larian nyari barisan pas apel pagi haha! Makasih udah selalu nge-backup dan ga pernah ninggalin saya. Kakak maping ter-asik sejagat kampus!",
+        likes: 15
+      },
+      {
+        id: "m4",
+        num: 4,
+        name: "Tiara",
+        role: "Seksi Konsumsi Dadakan",
+        category: "terharu",
+        tapeColor: "tape-sky",
+        avatarBg: "%23CBE6FF",
+        message: "Terima kasih banyak Kak Rezaldy sudah jadi maping yang sangat humble dan mengayomi. Ga pernah sekalipun nunjukin muka lelah di depan kami, selalu senyum dan bikin suasana jadi adem.",
+        likes: 21
+      },
+      {
+        id: "m5",
+        num: 5,
+        name: "Fajar",
+        role: "Si Ketua Yel-yel",
+        category: "lucu",
+        tapeColor: "tape-lavender",
+        avatarBg: "%23EADCF8",
+        message: "Yel-yel kelompok kita bisa jadi yang paling heboh kemarin itu semua berkat suntikan semangat dari Kak Rezaldy! Makasih banyak atas waktu dan tenaganya kak, kenangan MOB kemarin bakal selalu diingat!",
+        likes: 19
+      },
+      {
+        id: "m6",
+        num: 6,
+        name: "Sarah",
+        role: "Si Paling Panikan",
+        category: "terharu",
+        tapeColor: "tape-pink",
+        avatarBg: "%23FFD1BA",
+        message: "Bener-bener bersyukur dapet Kak Rezaldy jadi maping. Waktu nametag saya sempat ketinggalan di kos, kakak yang tenangin dan bantu cari solusi. Makasih banyak atas kebaikan hatinya kak!",
+        likes: 24
+      },
+      {
+        id: "m7",
+        num: 7,
+        name: "Bayu",
+        role: "Dokumentasi Kelompok",
+        category: "terharu",
+        tapeColor: "tape-mint",
+        avatarBg: "%23C1F0DB",
+        message: "Makasih Kak Rezaldy atas dedikasi dan waktu luangnya buat kelompok kita. Di sela-sela kesibukan kakak, kakak tetep standby balesin chat grup dan jagain kita di lapangan. Respect selalu kak!",
+        likes: 14
+      },
+      {
+        id: "m8",
+        num: 8,
+        name: "Nadia",
+        role: "Seksi Atribut",
+        category: "terharu",
+        tapeColor: "tape-yellow",
+        avatarBg: "%23FFEAA7",
+        message: "Terima kasih Kak Rezaldy sudah jadi sosok kakak yang begitu sabar memandu kami melewati masa adaptasi kampus yang penuh kejutan ini. Sehat selalu dan lancar semua rencana kuliahnya kak!",
+        likes: 16
+      },
+      {
+        id: "m9",
+        num: 9,
+        name: "Rizky",
+        role: "Si Penengah Diskusi",
+        category: "lucu",
+        tapeColor: "tape-sky",
+        avatarBg: "%23CBE6FF",
+        message: "Salut sama kesabaran Kak Rezaldy ngadepin 17 maba dengan kelakuan absurd dan random ini haha! Makasih bimbingannya kak, kalau main ke fakultas jangan lupa traktir ya kak wkwk.",
+        likes: 22
+      },
+      {
+        id: "m10",
+        num: 10,
+        name: "Tasya",
+        role: "Si Paling Ceria",
+        category: "terharu",
+        tapeColor: "tape-lavender",
+        avatarBg: "%23EADCF8",
+        message: "Kak Rezaldy makasih banyaak sudah bawa energi positif setiap pagi! Capeknya hari-hari MOB jadi ga berasa karena kakak selalu bikin suasana ceria dan seru.",
+        likes: 20
+      },
+      {
+        id: "m11",
+        num: 11,
+        name: "Rendy",
+        role: "Si Paling Banyak Tanya",
+        category: "lucu",
+        tapeColor: "tape-pink",
+        avatarBg: "%23FFD3E2",
+        message: "Maaf ya kak kalau chat WA saya sering spam nanyain tugas MOB mulu wkwk. Makasih sudah selalu fast respon dan sabar njelasin dari A sampai Z. Kakak juara!",
+        likes: 17
+      },
+      {
+        id: "m12",
+        num: 12,
+        name: "Amanda",
+        role: "Si Moodbooster",
+        category: "terharu",
+        tapeColor: "tape-mint",
+        avatarBg: "%23C1F0DB",
+        message: "Terima kasih banyak Kak Rezaldy! Semoga setiap kebaikan dan waktu yang kakak korbankan buat bimbing kami dibalas berlipat ganda. Semangat terus Kak Maping!",
+        likes: 25
+      },
+      {
+        id: "m13",
+        num: 13,
+        name: "Gilang",
+        role: "Si Jago Bikin Ketawa",
+        category: "lucu",
+        tapeColor: "tape-yellow",
+        avatarBg: "%23FFE89E",
+        message: "Masa orientasi yang awalnya nakutin berubah jadi seru banget gara-gara dapet maping seasik Kak Rezaldy! Makasih kak udah ga kaku dan mau diajak bercanda bareng kami!",
+        likes: 13
+      },
+      {
+        id: "m14",
+        num: 14,
+        name: "Clarissa",
+        role: "Si Paling Teliti",
+        category: "terharu",
+        tapeColor: "tape-sky",
+        avatarBg: "%23CBE6FF",
+        message: "Thank you Kak Rezaldy for being such an inspiring and patient mentor! Cara kakak memimpin kelompok bener-bener jadi panutan buat kami. Wish you all the best!",
+        likes: 19
+      },
+      {
+        id: "m15",
+        num: 15,
+        name: "Farhan",
+        role: "Si Bendahara Kelompok",
+        category: "lucu",
+        tapeColor: "tape-lavender",
+        avatarBg: "%23EADCF8",
+        message: "Terima kasih Kak Rezaldy udah ngejaga kita dari awal pembagian kelompok sampai hari penutupan. Kalau ada award maping terfavorit, fix juaranya kakak!",
+        likes: 27
+      },
+      {
+        id: "m16",
+        num: 16,
+        name: "Maya",
+        role: "Si Peka & Perhatian",
+        category: "terharu",
+        tapeColor: "tape-pink",
+        avatarBg: "%23FFD1BA",
+        message: "Kak Rezaldy makasih banyak atas perhatian dan arahannya selama seminggu penuh ini. Ga kerasa MOB udah kelar, pasti bakal kangen momen briefing bareng kakak!",
+        likes: 16
+      },
+      {
+        id: "m17",
+        num: 17,
+        name: "Kevin",
+        role: "Si Paling Kalem",
+        category: "lucu",
+        tapeColor: "tape-mint",
+        avatarBg: "%23C1F0DB",
+        message: "Kak Rezaldy makasih banyak ilmunya tentang tips kuliah dan cara adaptasi di kampus. Walaupun MOB udah selesai, tetap sering-sering nongkrong bareng kelompok kita ya kak!",
+        likes: 23
+      }
+    ];
+
+    // LocalStorage keys
+    const STORAGE_MEMBERS_KEY = "rezaldy_gift_members_v1";
+    const STORAGE_REZALDY_KEY = "rezaldy_gift_leader_v1";
+    const STORAGE_HEARTS_KEY = "rezaldy_gift_hearts_count";
+
+    let membersData = [];
+    let rezaldyData = {};
+    let activeFilter = 'all';
+    let currentModalPerson = null;
+
+    // Load initial data from localStorage or defaults
+    function initData() {
+      const savedMembers = localStorage.getItem(STORAGE_MEMBERS_KEY);
+      if (savedMembers) {
+        try { membersData = JSON.parse(savedMembers); } catch(e) { membersData = DEFAULT_MEMBERS; }
+      } else {
+        membersData = [...DEFAULT_MEMBERS];
+      }
+
+      const savedRezaldy = localStorage.getItem(STORAGE_REZALDY_KEY);
+      if (savedRezaldy) {
+        try { rezaldyData = JSON.parse(savedRezaldy); } catch(e) { rezaldyData = {...DEFAULT_REZALDY}; }
+      } else {
+        rezaldyData = {...DEFAULT_REZALDY};
+      }
+
+      const savedHearts = localStorage.getItem(STORAGE_HEARTS_KEY);
+      if (savedHearts) {
+        document.getElementById('rezaldy-heart-count').innerText = savedHearts;
+      }
+
+      renderRezaldyCard();
+      renderCards();
+      populateEditSelect();
+    }
+
+    // Helper SVG avatar generator
+    function getAvatarSVG(initials, bgColor, roleLabel) {
+      return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><rect width='300' height='300' fill='${bgColor}'/><circle cx='150' cy='115' r='55' fill='%23FFFFFF' opacity='0.9'/><path d='M60,260 C60,185 240,185 240,260 Z' fill='%23FFFFFF' opacity='0.9'/><text x='150' y='130' font-family='Arial, sans-serif' font-size='46' font-weight='bold' fill='%232D3142' text-anchor='middle'>${initials}</text><text x='150' y='275' font-family='Arial, sans-serif' font-size='12' font-weight='bold' fill='%23666666' text-anchor='middle'>${encodeURIComponent(roleLabel || 'MABA MOB')}</text></svg>`;
+    }
+
+    function renderRezaldyCard() {
+      document.getElementById('rezaldy-name-display').innerText = rezaldyData.name || "Kak Rezaldy";
+      document.getElementById('rezaldy-desc-display').innerText = rezaldyData.desc || DEFAULT_REZALDY.desc;
+      if (rezaldyData.photo && rezaldyData.photo.trim() !== '') {
+        document.getElementById('rezaldy-photo').src = rezaldyData.photo;
+      }
+    }
+
+    function renderCards() {
+      const container = document.getElementById('cards-container');
+      container.innerHTML = '';
+      const searchQuery = (document.getElementById('member-search').value || '').toLowerCase();
+
+      membersData.forEach((member, index) => {
+        // filter
+        if (activeFilter !== 'all' && member.category !== activeFilter) return;
+        if (searchQuery) {
+          const matchName = member.name.toLowerCase().includes(searchQuery);
+          const matchMsg = member.message.toLowerCase().includes(searchQuery);
+          const matchRole = (member.role || '').toLowerCase().includes(searchQuery);
+          if (!matchName && !matchMsg && !matchRole) return;
+        }
+
+        const initials = member.name.substring(0, 2).toUpperCase();
+        const photoSrc = member.photo && member.photo.trim() !== '' 
+          ? member.photo 
+          : getAvatarSVG(initials, member.avatarBg || '%23FFD3E2', member.role);
+
+        const card = document.createElement('div');
+        card.className = 'member-polaroid';
+        card.onclick = () => openLetterModal(member.id);
+
+        card.innerHTML = `
+          <div class="card-tape ${member.tapeColor || 'tape-pink'}"></div>
+          <div class="member-photo">
+            <img src="${photoSrc}" alt="${member.name}" loading="lazy" />
+            <span class="member-number-badge">#${index + 1}</span>
+          </div>
+          <div class="member-info">
+            <div class="member-name-row">
+              <span class="member-name">${member.name}</span>
+              <span class="member-role">${member.role || 'Maba'}</span>
+            </div>
+            <div class="member-preview-quote">
+              "${member.message}"
+            </div>
+            <div class="member-footer">
+              <span class="read-more-btn">Buka Surat 💌</span>
+              <span class="reaction-pill">❤️ ${member.likes || 0}</span>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      if (container.children.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #888;">
+            <p style="font-size: 32px; margin-bottom: 8px;">🔍</p>
+            <p>Tidak ada pesan yang cocok dengan kata pencarian tersebut.</p>
+          </div>
+        `;
+      }
+    }
+
+    function filterCards() {
+      renderCards();
+    }
+
+    function setCategoryFilter(cat, btn) {
+      activeFilter = cat;
+      document.querySelectorAll('.gallery-controls .btn-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCards();
+    }
+
+    // --- 2. ENVELOPE OPENING & CONFETTI ---
+    function openEnvelope() {
+      const env = document.getElementById('envelope-screen');
+      env.classList.add('opened');
+      fireConfettiBurst(1.5);
+      // Optional sound
+      playChime();
+      setTimeout(() => {
+        const stage = document.querySelector('.center-stage-wrap');
+        if (stage) stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 500);
+    }
+
+    // --- 3. MODAL BACA PESAN ---
+    function openLetterModal(personId) {
+      const person = membersData.find(m => m.id === personId);
+      if (!person) return;
+      currentModalPerson = person;
+
+      const initials = person.name.substring(0, 2).toUpperCase();
+      const photoSrc = person.photo && person.photo.trim() !== '' 
+        ? person.photo 
+        : getAvatarSVG(initials, person.avatarBg || '%23FFD3E2', person.role);
+
+      document.getElementById('modal-img').src = photoSrc;
+      document.getElementById('modal-name').innerText = person.name;
+      document.getElementById('modal-role').innerText = person.role ? `${person.role} • Maba MOB` : 'Mahasiswa Kelompok MOB';
+      document.getElementById('modal-message').innerText = `"${person.message}"`;
+      document.getElementById('modal-like-text').innerText = `Suka Pesan Ini (${person.likes || 0})`;
+
+      document.getElementById('letter-modal').classList.add('active');
+    }
+
+    function closeLetterModal() {
+      document.getElementById('letter-modal').classList.remove('active');
+      currentModalPerson = null;
+    }
+
+    function closeLetterModalOnBackdrop(e) {
+      if (e.target.id === 'letter-modal') closeLetterModal();
+    }
+
+    function likeCurrentModal() {
+      if (!currentModalPerson) return;
+      currentModalPerson.likes = (currentModalPerson.likes || 0) + 1;
+      document.getElementById('modal-like-text').innerText = `Suka Pesan Ini (${currentModalPerson.likes})`;
+      saveMembersData();
+      renderCards();
+      fireHeartAtCenter();
+    }
+
+    // --- 4. REAKSI HATI & TANGAN KE REZALDY ---
+    function sendHeartToRezaldy(e) {
+      const counter = document.getElementById('rezaldy-heart-count');
+      let count = parseInt(counter.innerText, 10) || 0;
+      count++;
+      counter.innerText = count;
+      localStorage.setItem(STORAGE_HEARTS_KEY, count);
+      
+      createFloatingHeart(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, '💖');
+      fireConfettiBurst(0.3);
+      playChime(523.25); // C5
+    }
+
+    function clapForRezaldy(e) {
+      const counter = document.getElementById('rezaldy-clap-count');
+      let count = parseInt(counter.innerText, 10) || 0;
+      count++;
+      counter.innerText = count;
+      createFloatingHeart(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, '👏');
+      playChime(659.25); // E5
+    }
+
+    function createFloatingHeart(x, y, emoji) {
+      const el = document.createElement('div');
+      el.className = 'floating-heart';
+      el.innerText = emoji;
+      el.style.left = (x - 12 + (Math.random() * 40 - 20)) + 'px';
+      el.style.top = (y - 20) + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1500);
+    }
+
+    function fireHeartAtCenter() {
+      createFloatingHeart(window.innerWidth / 2, window.innerHeight / 2, '❤️');
+    }
+
+    // --- 5. STORY / SLIDESHOW MODE ---
+    let storyIndex = 0;
+    let storyTimer = null;
+    let storyPlaying = true;
+    let allStoryItems = [];
+
+    function startStoryMode() {
+      allStoryItems = [
+        {
+          name: rezaldyData.name || "Kak Rezaldy",
+          role: "Mahasiswa Pendamping (Center Spotlight)",
+          message: rezaldyData.desc || DEFAULT_REZALDY.desc,
+          photo: rezaldyData.photo || document.getElementById('rezaldy-photo').src
+        },
+        ...membersData.map(m => ({
+          name: m.name,
+          role: m.role || 'Mahasiswa Bimbingan',
+          message: m.message,
+          photo: m.photo && m.photo.trim() !== '' ? m.photo : getAvatarSVG(m.name.substring(0, 2), m.avatarBg || '%23FFD3E2', m.role)
+        }))
+      ];
+
+      storyIndex = 0;
+      document.getElementById('story-overlay').classList.add('active');
+      renderStoryBars();
+      showStoryItem(0);
+    }
+
+    function renderStoryBars() {
+      const barContainer = document.getElementById('story-bars');
+      barContainer.innerHTML = '';
+      allStoryItems.forEach((_, idx) => {
+        const bar = document.createElement('div');
+        bar.className = 'story-bar';
+        bar.innerHTML = `<div class="story-bar-fill" id="story-fill-${idx}"></div>`;
+        barContainer.appendChild(bar);
+      });
+    }
+
+    function showStoryItem(index) {
+      if (index < 0 || index >= allStoryItems.length) {
+        closeStoryMode();
+        return;
+      }
+      storyIndex = index;
+      const item = allStoryItems[index];
+
+      // update bars
+      allStoryItems.forEach((_, idx) => {
+        const fill = document.getElementById(`story-fill-${idx}`);
+        if (fill) {
+          if (idx < index) fill.style.width = '100%';
+          else if (idx === index) fill.style.width = '0%';
+          else fill.style.width = '0%';
+        }
+      });
+
+      const content = document.getElementById('story-content');
+      content.innerHTML = `
+        <div style="width: 140px; height: 140px; margin: 0 auto 16px; border-radius: 50%; overflow: hidden; border: 4px solid #FFE89E; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+          <img src="${item.photo}" style="width: 100%; height: 100%; object-fit: cover;" alt="${item.name}" />
+        </div>
+        <div style="display: inline-block; background: #FFF4E6; color: #D35400; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 8px;">
+          ${item.role}
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 26px; margin-bottom: 12px; color: #2D3142;">${item.name}</h3>
+        <div style="background: #FAF8F5; border-radius: 16px; padding: 18px; font-family: var(--font-hand); font-size: 22px; line-height: 1.45; color: #4A5568; max-height: 220px; overflow-y: auto;">
+          "${item.message}"
+        </div>
+      `;
+
+      if (storyPlaying) {
+        animateStoryFill(index);
+      }
+    }
+
+    function animateStoryFill(index) {
+      if (storyTimer) clearInterval(storyTimer);
+      const fill = document.getElementById(`story-fill-${index}`);
+      let progress = 0;
+      const duration = 5000; // 5 detik per slide
+      const interval = 50;
+      const step = (interval / duration) * 100;
+
+      storyTimer = setInterval(() => {
+        if (!storyPlaying) return;
+        progress += step;
+        if (fill) fill.style.width = `${progress}%`;
+        if (progress >= 100) {
+          clearInterval(storyTimer);
+          nextStory();
+        }
+      }, interval);
+    }
+
+    function nextStory() {
+      if (storyIndex + 1 < allStoryItems.length) {
+        showStoryItem(storyIndex + 1);
+      } else {
+        closeStoryMode();
+      }
+    }
+
+    function prevStory() {
+      if (storyIndex - 1 >= 0) {
+        showStoryItem(storyIndex - 1);
+      }
+    }
+
+    function toggleStoryPlay() {
+      storyPlaying = !storyPlaying;
+      document.getElementById('story-play-btn').innerText = storyPlaying ? '⏸ Pause' : '▶️ Play';
+    }
+
+    function closeStoryMode() {
+      if (storyTimer) clearInterval(storyTimer);
+      document.getElementById('story-overlay').classList.remove('active');
+    }
+
+    // --- 6. EDIT & CUSTOMIZER MODAL ---
+    function openEditModal() {
+      populateEditSelect();
+      loadPersonToEdit();
+      document.getElementById('edit-modal').classList.add('active');
+    }
+
+    function closeEditModal() {
+      document.getElementById('edit-modal').classList.remove('active');
+    }
+
+    function populateEditSelect() {
+      const select = document.getElementById('edit-person-select');
+      select.innerHTML = `<option value="rezaldy">⭐ ${rezaldyData.name || 'Kak Rezaldy'} (MAPING)</option>`;
+      membersData.forEach((m, idx) => {
+        select.innerHTML += `<option value="${m.id}">#${idx+1} ${m.name} (${m.role || 'Maba'})</option>`;
+      });
+    }
+
+    function loadPersonToEdit() {
+      const selVal = document.getElementById('edit-person-select').value;
+      if (selVal === 'rezaldy') {
+        document.getElementById('edit-input-name').value = rezaldyData.name || "Kak Rezaldy";
+        document.getElementById('edit-input-role').value = rezaldyData.role || "Mahasiswa Pendamping";
+        document.getElementById('edit-input-message').value = rezaldyData.desc || DEFAULT_REZALDY.desc;
+      } else {
+        const mem = membersData.find(m => m.id === selVal);
+        if (mem) {
+          document.getElementById('edit-input-name').value = mem.name;
+          document.getElementById('edit-input-role').value = mem.role || "";
+          document.getElementById('edit-input-message').value = mem.message;
+        }
+      }
+    }
+
+    let tempUploadedImage = null;
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        tempUploadedImage = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function savePersonEdit() {
+      const selVal = document.getElementById('edit-person-select').value;
+      const newName = document.getElementById('edit-input-name').value.trim();
+      const newRole = document.getElementById('edit-input-role').value.trim();
+      const newMsg = document.getElementById('edit-input-message').value.trim();
+
+      if (selVal === 'rezaldy') {
+        rezaldyData.name = newName || "Kak Rezaldy";
+        rezaldyData.role = newRole || "Mahasiswa Pendamping";
+        rezaldyData.desc = newMsg || DEFAULT_REZALDY.desc;
+        if (tempUploadedImage) {
+          rezaldyData.photo = tempUploadedImage;
+          tempUploadedImage = null;
+        }
+        localStorage.setItem(STORAGE_REZALDY_KEY, JSON.stringify(rezaldyData));
+        renderRezaldyCard();
+      } else {
+        const mem = membersData.find(m => m.id === selVal);
+        if (mem) {
+          if (newName) mem.name = newName;
+          if (newRole) mem.role = newRole;
+          if (newMsg) mem.message = newMsg;
+          if (tempUploadedImage) {
+            mem.photo = tempUploadedImage;
+            tempUploadedImage = null;
+          }
+          saveMembersData();
+          renderCards();
+        }
+      }
+
+      alert('✨ Perubahan berhasil disimpan!');
+      closeEditModal();
+    }
+
+    function resetToDefaults() {
+      if (confirm("Kembalikan semua nama dan pesan ke teks contoh awal?")) {
+        localStorage.removeItem(STORAGE_MEMBERS_KEY);
+        localStorage.removeItem(STORAGE_REZALDY_KEY);
+        initData();
+        closeEditModal();
+      }
+    }
+
+    function saveMembersData() {
+      localStorage.setItem(STORAGE_MEMBERS_KEY, JSON.stringify(membersData));
+    }
+
+    // --- 6B. SHARE MODAL & EXPORT HTML ---
+    function openShareModal() {
+      document.getElementById('share-modal').classList.add('active');
+    }
+
+    function closeShareModal() {
+      document.getElementById('share-modal').classList.remove('active');
+    }
+
+    function exportCurrentHTML() {
+      let docHtml = document.documentElement.outerHTML;
+
+      // Reset modal active states so exported file starts clean
+      docHtml = docHtml.replace(/ class="modal-backdrop active"/g, ' class="modal-backdrop"');
+      docHtml = docHtml.replace(/<div id="envelope-screen" class="opened">/, '<div id="envelope-screen">');
+
+      // Inject custom data into default variables
+      const rezaldyJson = JSON.stringify(rezaldyData, null, 2);
+      const membersJson = JSON.stringify(membersData, null, 2);
+
+      docHtml = docHtml.replace(/const DEFAULT_REZALDY = \{[\s\S]*?\};/, `const DEFAULT_REZALDY = ${rezaldyJson};`);
+      docHtml = docHtml.replace(/const DEFAULT_MEMBERS = \[[\s\S]*?\];/, `const DEFAULT_MEMBERS = ${membersJson};`);
+
+      const fullFile = `<!DOCTYPE html>\n<html lang="id">\n${docHtml.replace(/^<html[^>]*>/, '').replace(/<\/html>$/, '')}\n</html>`;
+
+      const blob = new Blob([fullFile], { type: "text/html;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "Website-Hadiah-Kak-Rezaldy.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+
+      alert("🎉 Berhasil Mengunduh!\nFile 'Website-Hadiah-Kak-Rezaldy.html' siap dikirim atau dibuka di perangkat manapun.");
+    }
+
+    // --- 7. AUDIO BACKGROUND (LO-FI CHORDS DENGAN WEB AUDIO API) ---
+    let audioCtx = null;
+    let bgmIsPlaying = false;
+    let bgmLoopTimeout = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+    }
+
+    function toggleBGM() {
+      initAudio();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const btnText = document.getElementById('bgm-text');
+      const btnIcon = document.getElementById('bgm-icon');
+      const btn = document.getElementById('bgm-toggle-btn');
+
+      if (!bgmIsPlaying) {
+        bgmIsPlaying = true;
+        btn.classList.add('active');
+        btnIcon.innerText = '🔊';
+        btnText.innerText = 'Musik Berputar';
+        startChordLoop();
+      } else {
+        bgmIsPlaying = false;
+        btn.classList.remove('active');
+        btnIcon.innerText = '🎵';
+        btnText.innerText = 'Putar Musik Suasana';
+        if (bgmLoopTimeout) clearTimeout(bgmLoopTimeout);
+      }
+    }
+
+    // Peaceful soft chords progression (Fmaj7 -> Em7 -> Dm7 -> Cmaj7)
+    const chords = [
+      [174.61, 220.00, 261.63, 329.63], // Fmaj7 (F3, A3, C4, E4)
+      [164.81, 196.00, 246.94, 293.66], // Em7 (E3, G3, B3, D4)
+      [146.83, 174.61, 220.00, 261.63], // Dm7 (D3, F3, A3, C4)
+      [130.81, 164.81, 196.00, 246.94]  // Cmaj7 (C3, E3, G3, B3)
+    ];
+    let chordIdx = 0;
+
+    function startChordLoop() {
+      if (!bgmIsPlaying) return;
+      playSoftChord(chords[chordIdx]);
+      chordIdx = (chordIdx + 1) % chords.length;
+      bgmLoopTimeout = setTimeout(startChordLoop, 3200);
+    }
+
+    function playSoftChord(freqs) {
+      if (!audioCtx) return;
+      freqs.forEach((freq, i) => {
+        setTimeout(() => {
+          playNote(freq, 2.4, 0.035);
+        }, i * 90);
+      });
+    }
+
+    function playNote(freq, dur, vol) {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(vol, audioCtx.currentTime + 0.15);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + dur);
+      } catch(e) {}
+    }
+
+    function playChime(freq = 523.25) {
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      playNote(freq, 1.2, 0.08);
+      setTimeout(() => playNote(freq * 1.25, 1.0, 0.06), 80);
+    }
+
+    // --- 8. CONFETTI BURST ENGINE (VANILLA CANVAS) ---
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confettiPieces = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function fireConfettiBurst(density = 1) {
+      const colors = ['#FF7B72', '#FFE89E', '#C1F0DB', '#CBE6FF', '#EADCF8', '#FFA07A'];
+      const count = Math.floor(60 * density);
+      for (let i = 0; i < count; i++) {
+        confettiPieces.push({
+          x: canvas.width / 2 + (Math.random() * 100 - 50),
+          y: canvas.height / 2 + (Math.random() * 50 - 25),
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.8) * 18,
+          size: Math.random() * 8 + 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
+          opacity: 1
+        });
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = confettiPieces.length - 1; i >= 0; i--) {
+        const p = confettiPieces[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35; // gravitasi
+        p.rotation += p.rotationSpeed;
+        p.opacity -= 0.012;
+
+        if (p.opacity <= 0 || p.y > canvas.height) {
+          confettiPieces.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        ctx.restore();
+      }
+      requestAnimationFrame(animateConfetti);
+    }
+    animateConfetti();
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      initData();
+    });
+  </script>
+</body>
+</html>
