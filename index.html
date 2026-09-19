@@ -1348,259 +1348,123 @@
   <!-- Confetti Canvas Engine (Embedded) -->
   <canvas id="confetti-canvas" style="position: fixed; inset: 0; pointer-events: none; z-index: 10005;"></canvas>
 
+  <!-- Toast Notification -->
+  <div id="toast-notification" style="position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(100px); background: #2D3436; color: white; padding: 14px 28px; border-radius: 50px; font-size: 14px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 999999; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; gap: 10px;">
+    <span id="toast-text"></span>
+  </div>
+
   <script>
     // --- 1. DATA MASTER (17 TEMAN + REZALDO) ---
     const DEFAULT_REZALDO = {
-      id: "rezaldo",
-      name: "Kak Rezaldo",
-      role: "Mahasiswa Pendamping (MAPING)",
-      desc: "Terima kasih banyak sudah menjadi kakak pendamping yang luar biasa ramah, sabar membimbing, dan selalu siap sedia pas kelompok kita panik ngerjain tugas ataupun persiapan apel. Tanpa bimbingan Kak Rezaldo, masa orientasi kemarin pasti tidak akan sehangat dan sekompak ini!",
-      quote: "Seorang pembimbing bukan sekadar yang berjalan di depan, tapi yang memastikan tidak ada satu pun dari adik bimbingannya yang tertinggal di belakang. ✨",
-      photo: "" // SVG fallback default
-    };
+  "name": "Kak Rezaldo Updated",
+  "role": "Mahasiswa Pendamping (MAPING)",
+  "desc": "Test update from dashboard",
+  "photo": ""
+};
 
     const DEFAULT_MEMBERS = [
-      {
-        id: "m1",
-        num: 1,
-        name: "Naufal",
-        role: "Si Paling Santai",
-        category: "lucu",
-        tapeColor: "tape-pink",
-        avatarBg: "%23FFD3E2",
-        message: "Makasih banyak Kak Rezaldo udah sabar banget bimbing kelompok kita! Waktu kita kelimpungan sama tugas resume buku dan yel-yel, kakak selalu santai tapi solutif banget. Sukses terus kuliah dan skripsinya ya kak!",
-        likes: 12
-      },
-      {
-        id: "m2",
-        num: 2,
-        name: "Alya",
-        role: "Si Notulen Rajin",
-        category: "terharu",
-        tapeColor: "tape-mint",
-        avatarBg: "%23C1F0DB",
-        message: "Kak Rezaldo the best maping ever! Makasih udah selalu semangatin pas kita udah mulai kena mental sama padatnya rundown acara. Terima kasih sudah selalu perhatian sama kondisi kesehatan kita semua.",
-        likes: 18
-      },
-      {
-        id: "m3",
-        num: 3,
-        name: "Dimas",
-        role: "Si Paling Telat Baris",
-        category: "lucu",
-        tapeColor: "tape-yellow",
-        avatarBg: "%23FFE89E",
-        message: "Kak Rezaldo, maafkan saya yang selalu panik lari-larian nyari barisan pas apel pagi haha! Makasih udah selalu nge-backup dan ga pernah ninggalin saya. Kakak maping ter-asik sejagat kampus!",
-        likes: 15
-      },
-      {
-        id: "m4",
-        num: 4,
-        name: "Tiara",
-        role: "Seksi Konsumsi Dadakan",
-        category: "terharu",
-        tapeColor: "tape-sky",
-        avatarBg: "%23CBE6FF",
-        message: "Terima kasih banyak Kak Rezaldo sudah jadi maping yang sangat humble dan mengayomi. Ga pernah sekalipun nunjukin muka lelah di depan kami, selalu senyum dan bikin suasana jadi adem.",
-        likes: 21
-      },
-      {
-        id: "m5",
-        num: 5,
-        name: "Fajar",
-        role: "Si Ketua Yel-yel",
-        category: "lucu",
-        tapeColor: "tape-lavender",
-        avatarBg: "%23EADCF8",
-        message: "Yel-yel kelompok kita bisa jadi yang paling heboh kemarin itu semua berkat suntikan semangat dari Kak Rezaldo! Makasih banyak atas waktu dan tenaganya kak, kenangan MOB kemarin bakal selalu diingat!",
-        likes: 19
-      },
-      {
-        id: "m6",
-        num: 6,
-        name: "Sarah",
-        role: "Si Paling Panikan",
-        category: "terharu",
-        tapeColor: "tape-pink",
-        avatarBg: "%23FFD1BA",
-        message: "Bener-bener bersyukur dapet Kak Rezaldo jadi maping. Waktu nametag saya sempat ketinggalan di kos, kakak yang tenangin dan bantu cari solusi. Makasih banyak atas kebaikan hatinya kak!",
-        likes: 24
-      },
-      {
-        id: "m7",
-        num: 7,
-        name: "Bayu",
-        role: "Dokumentasi Kelompok",
-        category: "terharu",
-        tapeColor: "tape-mint",
-        avatarBg: "%23C1F0DB",
-        message: "Makasih Kak Rezaldo atas dedikasi dan waktu luangnya buat kelompok kita. Di sela-sela kesibukan kakak, kakak tetep standby balesin chat grup dan jagain kita di lapangan. Respect selalu kak!",
-        likes: 14
-      },
-      {
-        id: "m8",
-        num: 8,
-        name: "Nadia",
-        role: "Seksi Atribut",
-        category: "terharu",
-        tapeColor: "tape-yellow",
-        avatarBg: "%23FFEAA7",
-        message: "Terima kasih Kak Rezaldo sudah jadi sosok kakak yang begitu sabar memandu kami melewati masa adaptasi kampus yang penuh kejutan ini. Sehat selalu dan lancar semua rencana kuliahnya kak!",
-        likes: 16
-      },
-      {
-        id: "m9",
-        num: 9,
-        name: "Rizky",
-        role: "Si Penengah Diskusi",
-        category: "lucu",
-        tapeColor: "tape-sky",
-        avatarBg: "%23CBE6FF",
-        message: "Salut sama kesabaran Kak Rezaldo ngadepin 19 maba dengan kelakuan absurd dan random ini haha! Makasih bimbingannya kak, kalau main ke fakultas jangan lupa traktir ya kak wkwk.",
-        likes: 22
-      },
-      {
-        id: "m10",
-        num: 10,
-        name: "Tasya",
-        role: "Si Paling Ceria",
-        category: "terharu",
-        tapeColor: "tape-lavender",
-        avatarBg: "%23EADCF8",
-        message: "Kak Rezaldo makasih banyaak sudah bawa energi positif setiap pagi! Capeknya hari-hari MOB jadi ga berasa karena kakak selalu bikin suasana ceria dan seru.",
-        likes: 20
-      },
-      {
-        id: "m11",
-        num: 11,
-        name: "Rendy",
-        role: "Si Paling Banyak Tanya",
-        category: "lucu",
-        tapeColor: "tape-pink",
-        avatarBg: "%23FFD3E2",
-        message: "Maaf ya kak kalau chat WA saya sering spam nanyain tugas MOB mulu wkwk. Makasih sudah selalu fast respon dan sabar njelasin dari A sampai Z. Kakak juara!",
-        likes: 17
-      },
-      {
-        id: "m12",
-        num: 12,
-        name: "Amanda",
-        role: "Si Moodbooster",
-        category: "terharu",
-        tapeColor: "tape-mint",
-        avatarBg: "%23C1F0DB",
-        message: "Terima kasih banyak Kak Rezaldo! Semoga setiap kebaikan dan waktu yang kakak korbankan buat bimbing kami dibalas berlipat ganda. Semangat terus Kak Maping!",
-        likes: 25
-      },
-      {
-        id: "m13",
-        num: 13,
-        name: "Gilang",
-        role: "Si Jago Bikin Ketawa",
-        category: "lucu",
-        tapeColor: "tape-yellow",
-        avatarBg: "%23FFE89E",
-        message: "Masa orientasi yang awalnya nakutin berubah jadi seru banget gara-gara dapet maping seasik Kak Rezaldo! Makasih kak udah ga kaku dan mau diajak bercanda bareng kami!",
-        likes: 13
-      },
-      {
-        id: "m14",
-        num: 14,
-        name: "Clarissa",
-        role: "Si Paling Teliti",
-        category: "terharu",
-        tapeColor: "tape-sky",
-        avatarBg: "%23CBE6FF",
-        message: "Thank you Kak Rezaldo for being such an inspiring and patient mentor! Cara kakak memimpin kelompok bener-bener jadi panutan buat kami. Wish you all the best!",
-        likes: 19
-      },
-      {
-        id: "m15",
-        num: 15,
-        name: "Farhan",
-        role: "Si Bendahara Kelompok",
-        category: "lucu",
-        tapeColor: "tape-lavender",
-        avatarBg: "%23EADCF8",
-        message: "Terima kasih Kak Rezaldo udah ngejaga kita dari awal pembagian kelompok sampai hari penutupan. Kalau ada award maping terfavorit, fix juaranya kakak!",
-        likes: 27
-      },
-      {
-        id: "m16",
-        num: 16,
-        name: "Maya",
-        role: "Si Peka & Perhatian",
-        category: "terharu",
-        tapeColor: "tape-pink",
-        avatarBg: "%23FFD1BA",
-        message: "Kak Rezaldo makasih banyak atas perhatian dan arahannya selama seminggu penuh ini. Ga kerasa MOB udah kelar, pasti bakal kangen momen briefing bareng kakak!",
-        likes: 16
-      },
-      {
-        id: "m17",
-        num: 17,
-        name: "Kevin",
-        role: "Si Paling Kalem",
-        category: "lucu",
-        tapeColor: "tape-mint",
-        avatarBg: "%23C1F0DB",
-        message: "Kak Rezaldo makasih banyak ilmunya tentang tips kuliah dan cara adaptasi di kampus. Walaupun MOB udah selesai, tetap sering-sering nongkrong bareng kelompok kita ya kak!",
-        likes: 23
-      },
-      {
-        id: "m18",
-        num: 18,
-        name: "Dika",
-        role: "Si Paling Gercep",
-        category: "lucu",
-        tapeColor: "tape-yellow",
-        avatarBg: "%23FFEAA7",
-        message: "Kak Rezaldo terimakasih banyak sudah selalu sabar mengarahkan kami dari hari pertama sampai penutupan! Sukses selalu skripsi dan masa depannya ya kak, we will miss you!",
-        likes: 21
-      },
-      {
-        id: "m19",
-        num: 19,
-        name: "Salma",
-        role: "Si Paling Semangat",
-        category: "terharu",
-        tapeColor: "tape-sky",
-        avatarBg: "%23CBE6FF",
-        message: "Makasih banyak Kak Rezaldo atas dedikasi dan kehangatannya selama MOB. Senang banget bisa kenal dan dibimbing sama kakak pendamping sebaik ini. Sehat dan bahagia selalu kak!",
-        likes: 26
-      }
-    ];
+  {
+    "id": "m1",
+    "num": 1,
+    "name": "Naufal Updated",
+    "role": "Si Paling Santai",
+    "category": "lucu",
+    "message": "Test message"
+  }
+];
 
     // LocalStorage keys
-    const STORAGE_MEMBERS_KEY = "rezaldo_gift_members_v1";
+    const STORAGE_MEMBERS_KEY = "rezaldo_gift_members_v2";
     const STORAGE_REZALDO_KEY = "rezaldo_gift_leader_v2";
     const STORAGE_HEARTS_KEY = "rezaldo_gift_hearts_count";
+
+    // In-memory fallback if browser storage is blocked
+    const memStore = {};
+    function safeStorageGet(key) {
+      try { return localStorage.getItem(key); } catch(e) { return memStore[key] || null; }
+    }
+    function safeStorageSet(key, val) {
+      try { localStorage.setItem(key, val); } catch(e) { memStore[key] = val; }
+    }
+    function safeStorageRemove(key) {
+      try { localStorage.removeItem(key); } catch(e) { delete memStore[key]; }
+    }
+    function safeSessionGet(key) {
+      try { return sessionStorage.getItem(key); } catch(e) { return memStore['s_' + key] || null; }
+    }
+    function safeSessionSet(key, val) {
+      try { sessionStorage.setItem(key, val); } catch(e) { memStore['s_' + key] = val; }
+    }
+    function safeSessionRemove(key) {
+      try { sessionStorage.removeItem(key); } catch(e) { delete memStore['s_' + key]; }
+    }
+
+    function showToast(text, duration = 3500) {
+      const toast = document.getElementById('toast-notification');
+      const toastText = document.getElementById('toast-text');
+      if (!toast || !toastText) return;
+      toastText.innerText = text;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(100px)';
+      }, duration);
+    }
 
     let membersData = [];
     let rezaldoData = {};
     let activeFilter = 'all';
     let currentModalPerson = null;
 
-    // Load initial data from localStorage or defaults
+    // Load initial data from localStorage, server, or defaults
     function initData() {
-      const savedMembers = localStorage.getItem(STORAGE_MEMBERS_KEY);
+      const savedMembers = safeStorageGet(STORAGE_MEMBERS_KEY);
       if (savedMembers) {
         try { membersData = JSON.parse(savedMembers); } catch(e) { membersData = DEFAULT_MEMBERS; }
       } else {
         membersData = [...DEFAULT_MEMBERS];
       }
 
-      const savedRezaldo = localStorage.getItem(STORAGE_REZALDO_KEY);
+      const savedRezaldo = safeStorageGet(STORAGE_REZALDO_KEY);
       if (savedRezaldo) {
         try { rezaldoData = JSON.parse(savedRezaldo); } catch(e) { rezaldoData = {...DEFAULT_REZALDO}; }
       } else {
         rezaldoData = {...DEFAULT_REZALDO};
       }
 
-      const savedHearts = localStorage.getItem(STORAGE_HEARTS_KEY);
+      const savedHearts = safeStorageGet(STORAGE_HEARTS_KEY);
       if (savedHearts) {
         document.getElementById('rezaldo-heart-count').innerText = savedHearts;
       }
+
+      renderRezaldoCard();
+      renderCards();
+      populateEditSelect();
+      updateAdminButtonState();
+      loadServerData();
+    }
+
+    async function loadServerData() {
+      try {
+        const res = await fetch('/api/data');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.rezaldo && data.members) {
+            rezaldoData = data.rezaldo;
+            membersData = data.members;
+            safeStorageSet(STORAGE_REZALDO_KEY, JSON.stringify(rezaldoData));
+            safeStorageSet(STORAGE_MEMBERS_KEY, JSON.stringify(membersData));
+            renderRezaldoCard();
+            renderCards();
+            populateEditSelect();
+            if (typeof loadPersonToEdit === 'function') loadPersonToEdit();
+          }
+        }
+      } catch(e) {
+        // offline or static fallback
+      }
+    }
 
       renderRezaldoCard();
       renderCards();
@@ -1900,7 +1764,7 @@
     const DEFAULT_ADMIN = { user: "indrajit", pass: "indrajit123" };
 
     function getAdminCredentials() {
-      const saved = localStorage.getItem(STORAGE_ADMIN_CRED);
+      const saved = safeStorageGet(STORAGE_ADMIN_CRED);
       if (saved) {
         try { return JSON.parse(saved); } catch(e) {}
       }
@@ -1908,7 +1772,7 @@
     }
 
     function checkAdminAuth() {
-      return sessionStorage.getItem("rezaldo_admin_logged_in") === "true";
+      return safeSessionGet("rezaldo_admin_logged_in") === "true";
     }
 
     function updateAdminButtonState() {
@@ -1967,7 +1831,7 @@
       const cred = getAdminCredentials();
 
       if (u === cred.user && p === cred.pass) {
-        sessionStorage.setItem("rezaldo_admin_logged_in", "true");
+        safeSessionSet("rezaldo_admin_logged_in", "true");
         closeAdminLoginModal();
         updateAdminButtonState();
         openAdminDashboardModal();
@@ -1995,7 +1859,7 @@
 
     function handleAdminLogout() {
       if (confirm("Apakah kamu yakin ingin keluar dari Dashboard Admin?")) {
-        sessionStorage.removeItem("rezaldo_admin_logged_in");
+        safeSessionRemove("rezaldo_admin_logged_in");
         closeAdminDashboardModal();
         updateAdminButtonState();
         if (isLoginRoute()) {
@@ -2040,8 +1904,8 @@
       }
 
       const cred = { user: newUser, pass: newPass };
-      localStorage.setItem(STORAGE_ADMIN_CRED, JSON.stringify(cred));
-      alert("✅ Kredensial Admin berhasil diperbarui!\nGunakan username & password baru saat login berikutnya.");
+      safeStorageSet(STORAGE_ADMIN_CRED, JSON.stringify(cred));
+      showToast("✅ Kredensial Admin berhasil diperbarui!");
       switchDashboardTab('members');
     }
 
@@ -2089,16 +1953,51 @@
     function handleImageUpload(e) {
       const file = e.target.files[0];
       if (!file) return;
+
+      const previewImg = document.getElementById('edit-preview-img');
+      const previewLabel = document.getElementById('edit-preview-label');
+      if (previewLabel) previewLabel.innerText = "Mengoptimalkan foto...";
+
       const reader = new FileReader();
       reader.onload = function(evt) {
-        tempUploadedImage = evt.target.result;
-        const previewImg = document.getElementById('edit-preview-img');
-        if (previewImg) previewImg.src = tempUploadedImage;
+        const img = new Image();
+        img.onload = function() {
+          const maxDim = 800;
+          let w = img.width;
+          let h = img.height;
+          if (w > h) {
+            if (w > maxDim) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            }
+          } else {
+            if (h > maxDim) {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          tempUploadedImage = canvas.toDataURL('image/jpeg', 0.82);
+          if (previewImg) previewImg.src = tempUploadedImage;
+          if (previewLabel) previewLabel.innerText = "Foto siap disimpan! ✨";
+        };
+        img.src = evt.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    function savePersonEdit() {
+    async function savePersonEdit() {
+      const saveBtn = document.getElementById('btn-save-edit');
+      const origText = saveBtn ? saveBtn.innerHTML : '💾 Simpan Perubahan Ini';
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '⏳ Sedang Menyimpan ke Server...';
+      }
+
       const selVal = document.getElementById('edit-person-select').value;
       const newName = document.getElementById('edit-input-name').value.trim();
       const newRole = document.getElementById('edit-input-role').value.trim();
@@ -2112,7 +2011,7 @@
           rezaldoData.photo = tempUploadedImage;
           tempUploadedImage = null;
         }
-        localStorage.setItem(STORAGE_REZALDO_KEY, JSON.stringify(rezaldoData));
+        safeStorageSet(STORAGE_REZALDO_KEY, JSON.stringify(rezaldoData));
         renderRezaldoCard();
       } else {
         const mem = membersData.find(m => m.id === selVal);
@@ -2124,26 +2023,53 @@
             mem.photo = tempUploadedImage;
             tempUploadedImage = null;
           }
-          saveMembersData();
+          safeStorageSet(STORAGE_MEMBERS_KEY, JSON.stringify(membersData));
           renderCards();
         }
       }
 
-      alert('✨ Perubahan berhasil disimpan!');
+      populateEditSelect();
       loadPersonToEdit();
+
+      // Kirim ke backend server agar perubahan tersimpan secara permanen untuk SEMUA pengunjung
+      try {
+        const res = await fetch('/api/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            rezaldo: rezaldoData,
+            members: membersData,
+            auth: 'indrajit123'
+          })
+        });
+        const result = await res.json();
+        if (res.ok && result.success) {
+          showToast('✅ Berhasil disimpan secara permanen ke server!');
+        } else {
+          showToast('⚠️ Tersimpan di browser ini (Catatan: ' + (result.error || 'Server offline') + ')');
+        }
+      } catch(err) {
+        showToast('✅ Tersimpan di perangkat ini!');
+      } finally {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = origText;
+        }
+      }
     }
 
     function resetToDefaults() {
       if (confirm("Kembalikan semua nama dan pesan ke teks contoh awal?")) {
-        localStorage.removeItem(STORAGE_MEMBERS_KEY);
-        localStorage.removeItem(STORAGE_REZALDO_KEY);
+        safeStorageRemove(STORAGE_MEMBERS_KEY);
+        safeStorageRemove(STORAGE_REZALDO_KEY);
         initData();
         loadPersonToEdit();
+        showToast('🔄 Berhasil di-reset ke teks awal');
       }
     }
 
     function saveMembersData() {
-      localStorage.setItem(STORAGE_MEMBERS_KEY, JSON.stringify(membersData));
+      safeStorageSet(STORAGE_MEMBERS_KEY, JSON.stringify(membersData));
     }
 
     // --- 6B. SHARE MODAL & EXPORT HTML ---

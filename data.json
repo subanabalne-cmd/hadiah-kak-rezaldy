@@ -1,0 +1,18 @@
+{
+  "rezaldo": {
+    "name": "Kak Rezaldo Updated",
+    "role": "Mahasiswa Pendamping (MAPING)",
+    "desc": "Test update from dashboard",
+    "photo": ""
+  },
+  "members": [
+    {
+      "id": "m1",
+      "num": 1,
+      "name": "Naufal Updated",
+      "role": "Si Paling Santai",
+      "category": "lucu",
+      "message": "Test message"
+    }
+  ]
+}
