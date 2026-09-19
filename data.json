@@ -1,18 +1,221 @@
 {
   "rezaldo": {
-    "name": "Kak Rezaldo Updated",
+    "id": "rezaldo",
+    "name": "Kak Rezaldo",
     "role": "Mahasiswa Pendamping (MAPING)",
-    "desc": "Test update from dashboard",
+    "desc": "Terima kasih banyak sudah menjadi kakak pendamping yang luar biasa ramah, sabar membimbing, dan selalu siap sedia pas kelompok kita panik ngerjain tugas ataupun persiapan apel. Tanpa bimbingan Kak Rezaldo, masa orientasi kemarin pasti tidak akan sehangat dan sekompak ini!",
+    "quote": "Seorang pembimbing bukan sekadar yang berjalan di depan, tapi yang memastikan tidak ada satu pun dari adik bimbingannya yang tertinggal di belakang. ✨",
     "photo": ""
   },
   "members": [
     {
       "id": "m1",
       "num": 1,
-      "name": "Naufal Updated",
+      "name": "Naufal",
       "role": "Si Paling Santai",
       "category": "lucu",
-      "message": "Test message"
+      "tapeColor": "tape-pink",
+      "avatarBg": "%23FFD3E2",
+      "message": "Makasih banyak Kak Rezaldo udah sabar banget bimbing kelompok kita! Waktu kita kelimpungan sama tugas resume buku dan yel-yel, kakak selalu santai tapi solutif banget. Sukses terus kuliah dan skripsinya ya kak!",
+      "likes": 12
+    },
+    {
+      "id": "m2",
+      "num": 2,
+      "name": "Alya",
+      "role": "Si Notulen Rajin",
+      "category": "terharu",
+      "tapeColor": "tape-mint",
+      "avatarBg": "%23C1F0DB",
+      "message": "Kak Rezaldo the best maping ever! Makasih udah selalu semangatin pas kita udah mulai kena mental sama padatnya rundown acara. Terima kasih sudah selalu perhatian sama kondisi kesehatan kita semua.",
+      "likes": 18
+    },
+    {
+      "id": "m3",
+      "num": 3,
+      "name": "Dimas",
+      "role": "Si Paling Telat Baris",
+      "category": "lucu",
+      "tapeColor": "tape-yellow",
+      "avatarBg": "%23FFE89E",
+      "message": "Kak Rezaldo, maafkan saya yang selalu panik lari-larian nyari barisan pas apel pagi haha! Makasih udah selalu nge-backup dan ga pernah ninggalin saya. Kakak maping ter-asik sejagat kampus!",
+      "likes": 15
+    },
+    {
+      "id": "m4",
+      "num": 4,
+      "name": "Tiara",
+      "role": "Seksi Konsumsi Dadakan",
+      "category": "terharu",
+      "tapeColor": "tape-sky",
+      "avatarBg": "%23CBE6FF",
+      "message": "Terima kasih banyak Kak Rezaldo sudah jadi maping yang sangat humble dan mengayomi. Ga pernah sekalipun nunjukin muka lelah di depan kami, selalu senyum dan bikin suasana jadi adem.",
+      "likes": 21
+    },
+    {
+      "id": "m5",
+      "num": 5,
+      "name": "Fajar",
+      "role": "Si Ketua Yel-yel",
+      "category": "lucu",
+      "tapeColor": "tape-lavender",
+      "avatarBg": "%23EADCF8",
+      "message": "Yel-yel kelompok kita bisa jadi yang paling heboh kemarin itu semua berkat suntikan semangat dari Kak Rezaldo! Makasih banyak atas waktu dan tenaganya kak, kenangan MOB kemarin bakal selalu diingat!",
+      "likes": 19
+    },
+    {
+      "id": "m6",
+      "num": 6,
+      "name": "Sarah",
+      "role": "Si Paling Panikan",
+      "category": "terharu",
+      "tapeColor": "tape-pink",
+      "avatarBg": "%23FFD1BA",
+      "message": "Bener-bener bersyukur dapet Kak Rezaldo jadi maping. Waktu nametag saya sempat ketinggalan di kos, kakak yang tenangin dan bantu cari solusi. Makasih banyak atas kebaikan hatinya kak!",
+      "likes": 24
+    },
+    {
+      "id": "m7",
+      "num": 7,
+      "name": "Bayu",
+      "role": "Dokumentasi Kelompok",
+      "category": "terharu",
+      "tapeColor": "tape-mint",
+      "avatarBg": "%23C1F0DB",
+      "message": "Makasih Kak Rezaldo atas dedikasi dan waktu luangnya buat kelompok kita. Di sela-sela kesibukan kakak, kakak tetep standby balesin chat grup dan jagain kita di lapangan. Respect selalu kak!",
+      "likes": 14
+    },
+    {
+      "id": "m8",
+      "num": 8,
+      "name": "Nadia",
+      "role": "Seksi Atribut",
+      "category": "terharu",
+      "tapeColor": "tape-yellow",
+      "avatarBg": "%23FFEAA7",
+      "message": "Terima kasih Kak Rezaldo sudah jadi sosok kakak yang begitu sabar memandu kami melewati masa adaptasi kampus yang penuh kejutan ini. Sehat selalu dan lancar semua rencana kuliahnya kak!",
+      "likes": 16
+    },
+    {
+      "id": "m9",
+      "num": 9,
+      "name": "Rizky",
+      "role": "Si Penengah Diskusi",
+      "category": "lucu",
+      "tapeColor": "tape-sky",
+      "avatarBg": "%23CBE6FF",
+      "message": "Salut sama kesabaran Kak Rezaldo ngadepin 19 maba dengan kelakuan absurd dan random ini haha! Makasih bimbingannya kak, kalau main ke fakultas jangan lupa traktir ya kak wkwk.",
+      "likes": 22
+    },
+    {
+      "id": "m10",
+      "num": 10,
+      "name": "Tasya",
+      "role": "Si Paling Ceria",
+      "category": "terharu",
+      "tapeColor": "tape-lavender",
+      "avatarBg": "%23EADCF8",
+      "message": "Kak Rezaldo makasih banyaak sudah bawa energi positif setiap pagi! Capeknya hari-hari MOB jadi ga berasa karena kakak selalu bikin suasana ceria dan seru.",
+      "likes": 20
+    },
+    {
+      "id": "m11",
+      "num": 11,
+      "name": "Rendy",
+      "role": "Si Paling Banyak Tanya",
+      "category": "lucu",
+      "tapeColor": "tape-pink",
+      "avatarBg": "%23FFD3E2",
+      "message": "Maaf ya kak kalau chat WA saya sering spam nanyain tugas MOB mulu wkwk. Makasih sudah selalu fast respon dan sabar njelasin dari A sampai Z. Kakak juara!",
+      "likes": 17
+    },
+    {
+      "id": "m12",
+      "num": 12,
+      "name": "Amanda",
+      "role": "Si Moodbooster",
+      "category": "terharu",
+      "tapeColor": "tape-mint",
+      "avatarBg": "%23C1F0DB",
+      "message": "Terima kasih banyak Kak Rezaldo! Semoga setiap kebaikan dan waktu yang kakak korbankan buat bimbing kami dibalas berlipat ganda. Semangat terus Kak Maping!",
+      "likes": 25
+    },
+    {
+      "id": "m13",
+      "num": 13,
+      "name": "Gilang",
+      "role": "Si Jago Bikin Ketawa",
+      "category": "lucu",
+      "tapeColor": "tape-yellow",
+      "avatarBg": "%23FFE89E",
+      "message": "Masa orientasi yang awalnya nakutin berubah jadi seru banget gara-gara dapet maping seasik Kak Rezaldo! Makasih kak udah ga kaku dan mau diajak bercanda bareng kami!",
+      "likes": 13
+    },
+    {
+      "id": "m14",
+      "num": 14,
+      "name": "Clarissa",
+      "role": "Si Paling Teliti",
+      "category": "terharu",
+      "tapeColor": "tape-sky",
+      "avatarBg": "%23CBE6FF",
+      "message": "Thank you Kak Rezaldo for being such an inspiring and patient mentor! Cara kakak memimpin kelompok bener-bener jadi panutan buat kami. Wish you all the best!",
+      "likes": 19
+    },
+    {
+      "id": "m15",
+      "num": 15,
+      "name": "Farhan",
+      "role": "Si Bendahara Kelompok",
+      "category": "lucu",
+      "tapeColor": "tape-lavender",
+      "avatarBg": "%23EADCF8",
+      "message": "Terima kasih Kak Rezaldo udah ngejaga kita dari awal pembagian kelompok sampai hari penutupan. Kalau ada award maping terfavorit, fix juaranya kakak!",
+      "likes": 27
+    },
+    {
+      "id": "m16",
+      "num": 16,
+      "name": "Maya",
+      "role": "Si Peka & Perhatian",
+      "category": "terharu",
+      "tapeColor": "tape-pink",
+      "avatarBg": "%23FFD1BA",
+      "message": "Kak Rezaldo makasih banyak atas perhatian dan arahannya selama seminggu penuh ini. Ga kerasa MOB udah kelar, pasti bakal kangen momen briefing bareng kakak!",
+      "likes": 16
+    },
+    {
+      "id": "m17",
+      "num": 17,
+      "name": "Kevin",
+      "role": "Si Paling Kalem",
+      "category": "lucu",
+      "tapeColor": "tape-mint",
+      "avatarBg": "%23C1F0DB",
+      "message": "Kak Rezaldo makasih banyak ilmunya tentang tips kuliah dan cara adaptasi di kampus. Walaupun MOB udah selesai, tetap sering-sering nongkrong bareng kelompok kita ya kak!",
+      "likes": 23
+    },
+    {
+      "id": "m18",
+      "num": 18,
+      "name": "Dika",
+      "role": "Si Paling Gercep",
+      "category": "lucu",
+      "tapeColor": "tape-yellow",
+      "avatarBg": "%23FFEAA7",
+      "message": "Kak Rezaldo terimakasih banyak sudah selalu sabar mengarahkan kami dari hari pertama sampai penutupan! Sukses selalu skripsi dan masa depannya ya kak, we will miss you!",
+      "likes": 21
+    },
+    {
+      "id": "m19",
+      "num": 19,
+      "name": "Salma",
+      "role": "Si Paling Semangat",
+      "category": "terharu",
+      "tapeColor": "tape-sky",
+      "avatarBg": "%23CBE6FF",
+      "message": "Makasih banyak Kak Rezaldo atas dedikasi dan kehangatannya selama MOB. Senang banget bisa kenal dan dibimbing sama kakak pendamping sebaik ini. Sehat dan bahagia selalu kak!",
+      "likes": 26
     }
   ]
 }
