@@ -1005,25 +1005,9 @@
         <span>Kelompok MOB • Kenangan Bersama</span>
       </div>
       <div class="control-actions">
-        <button class="btn-pill" id="bgm-toggle-btn" onclick="toggleBGM()">
-          <span id="bgm-icon">🎵</span>
-          <span id="bgm-text">Putar Musik Suasana</span>
-        </button>
-        <button class="btn-pill" onclick="startStoryMode()">
-          <span>🎬</span>
-          <span>Mode Story / Slideshow</span>
-        </button>
-        <button class="btn-pill" onclick="openEditModal()">
-          <span>✏️</span>
-          <span>Edit Foto & Pesan</span>
-        </button>
-        <button class="btn-pill" onclick="openShareModal()">
-          <span>🚀</span>
-          <span>Cara Bagikan Link</span>
-        </button>
-        <button class="btn-pill active" onclick="exportCurrentHTML()" title="Unduh file HTML lengkap beserta foto dan pesan yang sudah kamu edit">
-          <span>📥</span>
-          <span>Unduh File Jadi</span>
+        <button class="btn-pill" onclick="openAdminPortal()" id="admin-portal-btn">
+          <span>🔐</span>
+          <span id="admin-btn-label">Dashboard Editor</span>
         </button>
       </div>
     </header>
@@ -1181,56 +1165,153 @@
     </div>
   </div>
 
-  <!-- 7. MODAL EDIT & GANTI FOTO / PESAN -->
-  <div id="edit-modal">
-    <div class="edit-box">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <h3>⚙️ Sesuaikan Nama, Pesan, & Foto</h3>
-        <button class="btn-pill" onclick="closeEditModal()">✕ Tutup</button>
+  <!-- 7. MODAL LOGIN ADMIN DASHBOARD -->
+  <div id="admin-login-modal" class="modal-backdrop" onclick="if(event.target.id==='admin-login-modal') closeAdminLoginModal()">
+    <div class="modal-card" style="max-width: 420px; text-align: center;">
+      <button class="modal-close" onclick="closeAdminLoginModal()">✕</button>
+      
+      <div style="width: 72px; height: 72px; margin: 0 auto 16px; background: linear-gradient(135deg, #FFE89E, #FFD1BA); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);">
+        🔐
       </div>
 
-      <div class="edit-instruction">
-        <strong>💡 Panduan Mudah:</strong><br/>
-        Kamu bisa langsung mengganti teks pesan atau memilih file foto asli dari HP/laptop untuk masing-masing orang. Semua perubahan langsung tersimpan otomatis di browser ini!
+      <h3 style="font-family: var(--font-display); font-size: 24px; color: #2D3142; margin-bottom: 6px;">Login Dashboard Editor</h3>
+      <p style="font-size: 13px; color: #7F8C8D; margin-bottom: 22px;">Khusus panitia / pengelola kelompok untuk mengatur data foto dan ucapan.</p>
+
+      <div id="admin-login-error" style="display: none; background: #FFEAEA; color: #D63031; font-size: 13px; padding: 10px; border-radius: 10px; margin-bottom: 14px; border: 1px solid #FFA8A8; text-align: left;"></div>
+
+      <div style="text-align: left; margin-bottom: 14px;">
+        <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #4B5563;">Username</label>
+        <input type="text" id="admin-login-user" placeholder="Masukkan username" style="width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #DDD; font-size: 14px; outline: none;" />
       </div>
 
-      <div class="edit-field-group">
-        <label>Pilih Siapa yang Mau Diedit:</label>
-        <select id="edit-person-select" onchange="loadPersonToEdit()">
-          <option value="rezaldo">⭐ Kak Rezaldo (Mahasiswa Pendamping)</option>
-          <!-- Friends will be appended -->
-        </select>
+      <div style="text-align: left; margin-bottom: 20px;">
+        <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #4B5563;">Password</label>
+        <input type="password" id="admin-login-pass" placeholder="Masukkan password" style="width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #DDD; font-size: 14px; outline: none;" onkeydown="if(event.key==='Enter') submitAdminLogin()" />
       </div>
 
-      <div class="edit-field-group">
-        <label>Nama / Panggilan:</label>
-        <input type="text" id="edit-input-name" placeholder="Misal: Kak Rezaldo / Naufal" />
+      <button class="btn-pill active" onclick="submitAdminLogin()" style="width: 100%; padding: 12px; justify-content: center; font-size: 15px; margin-bottom: 14px;">
+        Masuk ke Dashboard 🚀
+      </button>
+
+      <div style="background: #FFF8E7; border: 1px dashed #FFEAA7; border-radius: 10px; padding: 10px; font-size: 12px; color: #8C5B00;">
+        💡 <strong>Default Kredensial:</strong><br/>
+        Username: <code>admin</code> • Password: <code>1234</code><br/>
+        <em>(Bisa diganti setelah kamu berhasil login)</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. MODAL DASHBOARD EDITOR UTAMA -->
+  <div id="admin-dashboard-modal" class="modal-backdrop" onclick="if(event.target.id==='admin-dashboard-modal') closeAdminDashboardModal()">
+    <div class="modal-card" style="max-width: 820px; max-height: 90vh; overflow-y: auto;">
+      
+      <!-- Top header dashboard -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #EFE6D8; padding-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 24px; color: #2D3142; margin-bottom: 4px;">⚙️ Dashboard Editor Kelompok</h3>
+          <span style="background: #E6FFFA; color: #047857; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px;">🟢 Login sebagai Admin</span>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button class="btn-pill" onclick="exportCurrentHTML()" title="Unduh file HTML jadi lengkap">
+            <span>📥</span><span>Unduh File Jadi</span>
+          </button>
+          <button class="btn-pill" onclick="handleAdminLogout()" style="background: #FFF0F0; border-color: #FFAAAA; color: #D63031;">
+            <span>🚪</span><span>Logout</span>
+          </button>
+          <button class="modal-close" style="position: static;" onclick="closeAdminDashboardModal()">✕</button>
+        </div>
       </div>
 
-      <div class="edit-field-group">
-        <label>Peran / Julukan Lucu:</label>
-        <input type="text" id="edit-input-role" placeholder="Misal: Mahasiswa Pendamping / Si Paling Santai" />
-      </div>
-
-      <div class="edit-field-group">
-        <label>Isi Pesan / Ucapan:</label>
-        <textarea id="edit-input-message" rows="4" placeholder="Tuliskan pesan apresiasi dan kesan..."></textarea>
-      </div>
-
-      <div class="edit-field-group">
-        <label>Ganti Foto (Upload dari Komputer / HP):</label>
-        <input type="file" id="edit-input-file" accept="image/*" onchange="handleImageUpload(event)" />
-        <p style="font-size: 12px; color: #888; margin-top: 4px;">Foto akan di-convert secara otomatis & tersimpan langsung di browser.</p>
-      </div>
-
-      <div style="display: flex; gap: 10px; margin-top: 25px; flex-wrap: wrap;">
-        <button class="btn-pill active" onclick="savePersonEdit()" style="flex: 1;">
-          💾 Simpan Perubahan
+      <!-- Tabs Navigation -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #F1F2F6; padding-bottom: 8px;">
+        <button class="btn-pill active" id="tab-btn-members" onclick="switchDashboardTab('members')">
+          👥 Edit Data (Rezaldo & 19 Anggota)
         </button>
-        <button class="btn-pill" onclick="resetToDefaults()" style="background: #FFF0F0; border-color: #FFAAAA; color: #D63031;">
-          🔄 Reset Contoh Semula
+        <button class="btn-pill" id="tab-btn-security" onclick="switchDashboardTab('security')">
+          🔑 Keamanan & Password
         </button>
       </div>
+
+      <!-- TAB 1: MEMBERS & MAPING EDITOR -->
+      <div id="tab-content-members">
+        <div class="edit-instruction" style="margin-bottom: 18px;">
+          <strong>💡 Tips Pengisian:</strong> Pilih nama dari pilihan di bawah, lalu kamu bisa mengganti nama, peran/julukan, pesan ucapan, atau langsung upload foto asli dari HP/laptop. Klik tombol <strong>"Simpan Perubahan Ini"</strong> setelah selesai!
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 180px; gap: 20px; align-items: start;">
+          <div>
+            <div class="edit-field-group">
+              <label>Pilih Yang Mau Diedit:</label>
+              <select id="edit-person-select" onchange="loadPersonToEdit()" style="font-weight: 600; font-size: 14px;">
+                <option value="rezaldo">⭐ Kak Rezaldo (Mahasiswa Pendamping)</option>
+              </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="edit-field-group">
+                <label>Nama Lengkap / Panggilan:</label>
+                <input type="text" id="edit-input-name" placeholder="Misal: Kak Rezaldo / Naufal" />
+              </div>
+              <div class="edit-field-group">
+                <label>Peran / Julukan Lucu:</label>
+                <input type="text" id="edit-input-role" placeholder="Misal: Maping / Si Paling Santai" />
+              </div>
+            </div>
+
+            <div class="edit-field-group">
+              <label>Isi Pesan / Ucapan Apresiasi:</label>
+              <textarea id="edit-input-message" rows="4" placeholder="Tuliskan pesan apresiasi dan kesan..."></textarea>
+            </div>
+
+            <div class="edit-field-group">
+              <label>Ganti Foto (Upload dari Galeri / File):</label>
+              <input type="file" id="edit-input-file" accept="image/*" onchange="handleImageUpload(event)" />
+            </div>
+          </div>
+
+          <!-- Preview Box -->
+          <div style="background: #FAF8F5; border: 2px dashed #E2D9C8; border-radius: 16px; padding: 14px; text-align: center;">
+            <span style="font-size: 12px; color: #7F8C8D; font-weight: 600; display: block; margin-bottom: 8px;">Preview Foto:</span>
+            <div style="width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 12px; overflow: hidden; background: #EFEFEF; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+              <img id="edit-preview-img" src="" style="width: 100%; height: 100%; object-fit: cover;" alt="Preview" />
+            </div>
+            <span id="edit-preview-label" style="font-size: 12px; font-weight: 700; color: #2D3142;">Kak Rezaldo</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 25px; flex-wrap: wrap;">
+          <button class="btn-pill active" onclick="savePersonEdit()" style="flex: 1; padding: 12px; justify-content: center; font-size: 15px;">
+            💾 Simpan Perubahan Ini
+          </button>
+          <button class="btn-pill" onclick="resetToDefaults()" style="background: #FFF0F0; border-color: #FFAAAA; color: #D63031; padding: 12px;">
+            🔄 Reset ke Teks Awal
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 2: SECURITY SETTINGS -->
+      <div id="tab-content-security" style="display: none;">
+        <div class="edit-instruction">
+          Ganti username & password admin agar hanya panitia kelompokmu yang memiliki akses untuk mengubah pesan/foto di website ini.
+        </div>
+
+        <div class="edit-field-group">
+          <label>Username Baru:</label>
+          <input type="text" id="admin-change-user" placeholder="Username baru (misal: panitia)" />
+        </div>
+
+        <div class="edit-field-group">
+          <label>Password Baru:</label>
+          <input type="password" id="admin-change-pass" placeholder="Password baru minimal 4 karakter" />
+        </div>
+
+        <div style="margin-top: 20px;">
+          <button class="btn-pill active" onclick="saveAdminCredentials()" style="padding: 12px 24px;">
+            💾 Simpan Akun Admin Baru
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -1539,6 +1620,7 @@
       renderRezaldoCard();
       renderCards();
       populateEditSelect();
+      updateAdminButtonState();
     }
 
     // Helper SVG avatar generator
@@ -1828,15 +1910,131 @@
       document.getElementById('story-overlay').classList.remove('active');
     }
 
-    // --- 6. EDIT & CUSTOMIZER MODAL ---
-    function openEditModal() {
-      populateEditSelect();
-      loadPersonToEdit();
-      document.getElementById('edit-modal').classList.add('active');
+    // --- 6. AUTH & DASHBOARD ADMIN LOGIC ---
+    const STORAGE_ADMIN_CRED = "rezaldo_admin_cred_v1";
+    const DEFAULT_ADMIN = { user: "admin", pass: "1234" };
+
+    function getAdminCredentials() {
+      const saved = localStorage.getItem(STORAGE_ADMIN_CRED);
+      if (saved) {
+        try { return JSON.parse(saved); } catch(e) {}
+      }
+      return DEFAULT_ADMIN;
     }
 
-    function closeEditModal() {
-      document.getElementById('edit-modal').classList.remove('active');
+    function checkAdminAuth() {
+      return sessionStorage.getItem("rezaldo_admin_logged_in") === "true";
+    }
+
+    function updateAdminButtonState() {
+      const btn = document.getElementById('admin-portal-btn');
+      const label = document.getElementById('admin-btn-label');
+      if (!btn || !label) return;
+      if (checkAdminAuth()) {
+        btn.classList.add('active');
+        label.innerText = 'Buka Dashboard Editor';
+      } else {
+        btn.classList.remove('active');
+        label.innerText = 'Dashboard Editor';
+      }
+    }
+
+    function openAdminPortal() {
+      if (checkAdminAuth()) {
+        openAdminDashboardModal();
+      } else {
+        openAdminLoginModal();
+      }
+    }
+
+    function openAdminLoginModal() {
+      document.getElementById('admin-login-error').style.display = 'none';
+      document.getElementById('admin-login-user').value = '';
+      document.getElementById('admin-login-pass').value = '';
+      document.getElementById('admin-login-modal').classList.add('active');
+      setTimeout(() => document.getElementById('admin-login-user').focus(), 100);
+    }
+
+    function closeAdminLoginModal() {
+      document.getElementById('admin-login-modal').classList.remove('active');
+    }
+
+    function submitAdminLogin() {
+      const u = document.getElementById('admin-login-user').value.trim();
+      const p = document.getElementById('admin-login-pass').value.trim();
+      const cred = getAdminCredentials();
+
+      if (u === cred.user && p === cred.pass) {
+        sessionStorage.setItem("rezaldo_admin_logged_in", "true");
+        closeAdminLoginModal();
+        updateAdminButtonState();
+        openAdminDashboardModal();
+        playChime(659.25);
+      } else {
+        const err = document.getElementById('admin-login-error');
+        err.innerText = "❌ Username atau Password salah! (Default: admin / 1234)";
+        err.style.display = "block";
+      }
+    }
+
+    function openAdminDashboardModal() {
+      populateEditSelect();
+      loadPersonToEdit();
+      switchDashboardTab('members');
+      document.getElementById('admin-dashboard-modal').classList.add('active');
+    }
+
+    function closeAdminDashboardModal() {
+      document.getElementById('admin-dashboard-modal').classList.remove('active');
+    }
+
+    function handleAdminLogout() {
+      if (confirm("Apakah kamu yakin ingin keluar dari Dashboard Admin?")) {
+        sessionStorage.removeItem("rezaldo_admin_logged_in");
+        closeAdminDashboardModal();
+        updateAdminButtonState();
+      }
+    }
+
+    function switchDashboardTab(tab) {
+      const tabMembers = document.getElementById('tab-content-members');
+      const tabSecurity = document.getElementById('tab-content-security');
+      const btnMembers = document.getElementById('tab-btn-members');
+      const btnSecurity = document.getElementById('tab-btn-security');
+
+      if (tab === 'members') {
+        tabMembers.style.display = 'block';
+        tabSecurity.style.display = 'none';
+        btnMembers.classList.add('active');
+        btnSecurity.classList.remove('active');
+      } else {
+        tabMembers.style.display = 'none';
+        tabSecurity.style.display = 'block';
+        btnMembers.classList.remove('active');
+        btnSecurity.classList.add('active');
+        const cred = getAdminCredentials();
+        document.getElementById('admin-change-user').value = cred.user;
+        document.getElementById('admin-change-pass').value = '';
+      }
+    }
+
+    function saveAdminCredentials() {
+      const newUser = document.getElementById('admin-change-user').value.trim();
+      const newPass = document.getElementById('admin-change-pass').value.trim();
+
+      if (!newUser) {
+        alert("Username tidak boleh kosong!");
+        return;
+      }
+      if (!newPass || newPass.length < 4) {
+        alert("Password minimal harus 4 karakter!");
+        return;
+      }
+
+      const cred = { user: newUser, pass: newPass };
+      localStorage.setItem(STORAGE_ADMIN_CRED, JSON.stringify(cred));
+      alert("✅ Kredensial Admin berhasil diperbarui!\nGunakan username & password baru saat login berikutnya.");
+      switchDashboardTab('members');
     }
 
     function populateEditSelect() {
@@ -1849,16 +2047,32 @@
 
     function loadPersonToEdit() {
       const selVal = document.getElementById('edit-person-select').value;
+      const previewImg = document.getElementById('edit-preview-img');
+      const previewLabel = document.getElementById('edit-preview-label');
+
       if (selVal === 'rezaldo') {
         document.getElementById('edit-input-name').value = rezaldoData.name || "Kak Rezaldo";
         document.getElementById('edit-input-role').value = rezaldoData.role || "Mahasiswa Pendamping";
         document.getElementById('edit-input-message').value = rezaldoData.desc || DEFAULT_REZALDO.desc;
+        if (previewLabel) previewLabel.innerText = rezaldoData.name || "Kak Rezaldo";
+        if (previewImg) {
+          previewImg.src = rezaldoData.photo && rezaldoData.photo.trim() !== '' 
+            ? rezaldoData.photo 
+            : document.getElementById('rezaldo-photo').src;
+        }
       } else {
         const mem = membersData.find(m => m.id === selVal);
         if (mem) {
           document.getElementById('edit-input-name').value = mem.name;
           document.getElementById('edit-input-role').value = mem.role || "";
           document.getElementById('edit-input-message').value = mem.message;
+          if (previewLabel) previewLabel.innerText = mem.name;
+          if (previewImg) {
+            const initials = mem.name.substring(0, 2).toUpperCase();
+            previewImg.src = mem.photo && mem.photo.trim() !== '' 
+              ? mem.photo 
+              : getAvatarSVG(initials, mem.avatarBg || '%23FFD3E2', mem.role);
+          }
         }
       }
     }
@@ -1870,6 +2084,8 @@
       const reader = new FileReader();
       reader.onload = function(evt) {
         tempUploadedImage = evt.target.result;
+        const previewImg = document.getElementById('edit-preview-img');
+        if (previewImg) previewImg.src = tempUploadedImage;
       };
       reader.readAsDataURL(file);
     }
@@ -1906,7 +2122,7 @@
       }
 
       alert('✨ Perubahan berhasil disimpan!');
-      closeEditModal();
+      loadPersonToEdit();
     }
 
     function resetToDefaults() {
@@ -1914,7 +2130,7 @@
         localStorage.removeItem(STORAGE_MEMBERS_KEY);
         localStorage.removeItem(STORAGE_REZALDO_KEY);
         initData();
-        closeEditModal();
+        loadPersonToEdit();
       }
     }
 
