@@ -1210,10 +1210,10 @@
       <!-- Tabs Navigation -->
       <div style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #F1F2F6; padding-bottom: 8px;">
         <button class="btn-pill active" id="tab-btn-members" onclick="switchDashboardTab('members')">
-          👥 Edit Data (Rezaldo & 19 Anggota)
+          👥 Edit Data
         </button>
         <button class="btn-pill" id="tab-btn-security" onclick="switchDashboardTab('security')">
-          🔑 Keamanan & Password
+          🔑 Keamanan
         </button>
       </div>
 
@@ -1268,9 +1268,18 @@
           <button class="btn-pill active" id="btn-save-edit" onclick="savePersonEdit()" style="flex: 1; padding: 12px; justify-content: center; font-size: 15px;">
             💾 Simpan Perubahan Ini
           </button>
-          <button class="btn-pill" onclick="resetToDefaults()" style="background: #FFF0F0; border-color: #FFAAAA; color: #D63031; padding: 12px;">
-            🔄 Reset ke Teks Awal
+          <button class="btn-pill" onclick="addNewMember()" style="background: #E8F5E9; border-color: #81C784; color: #2E7D32; padding: 12px;">
+            ➕ Tambah Anggota Baru
           </button>
+          <button class="btn-pill" id="btn-delete-member" onclick="deleteSelectedMember()" style="background: #FFF0F0; border-color: #FFAAAA; color: #D63031; padding: 12px; display: none;">
+            🗑️ Hapus Anggota Ini
+          </button>
+          <button class="btn-pill" onclick="resetToDefaults()" style="background: #FFF8E1; border-color: #FFD54F; color: #F57F17; padding: 12px;">
+            🔄 Reset Awal
+          </button>
+        </div>
+        <div id="member-count-info" style="margin-top: 12px; padding: 10px 16px; background: linear-gradient(135deg, #667eea11, #764ba211); border-radius: 12px; font-size: 13px; color: #555; text-align: center;">
+          👥 Total anggota: <strong id="member-count-num">19</strong> orang
         </div>
       </div>
 
@@ -1368,12 +1377,12 @@
   {
     "id": "m1",
     "num": 1,
-    "name": "Naufal",
-    "role": "Si Paling Santai",
+    "name": "tes",
+    "role": "tes",
     "category": "lucu",
     "tapeColor": "tape-pink",
     "avatarBg": "%23FFD3E2",
-    "message": "Makasih banyak Kak Rezaldo udah sabar banget bimbing kelompok kita! Waktu kita kelimpungan sama tugas resume buku dan yel-yel, kakak selalu santai tapi solutif banget. Sukses terus kuliah dan skripsinya ya kak!",
+    "message": "tes",
     "likes": 12
   },
   {
@@ -1390,7 +1399,7 @@
   {
     "id": "m3",
     "num": 3,
-    "name": "Dimas TEST EDIT",
+    "name": "Dimas",
     "role": "Si Paling Telat Baris",
     "category": "lucu",
     "tapeColor": "tape-yellow",
@@ -2112,12 +2121,19 @@
       membersData.forEach((m, idx) => {
         select.innerHTML += `<option value="${m.id}">#${idx+1} ${m.name} (${m.role || 'Maba'})</option>`;
       });
+      updateMemberCount();
     }
 
     function loadPersonToEdit() {
       const selVal = document.getElementById('edit-person-select').value;
       const previewImg = document.getElementById('edit-preview-img');
       const previewLabel = document.getElementById('edit-preview-label');
+      const deleteBtn = document.getElementById('btn-delete-member');
+
+      // Tampilkan/sembunyikan tombol hapus
+      if (deleteBtn) {
+        deleteBtn.style.display = (selVal === 'rezaldo') ? 'none' : 'inline-flex';
+      }
 
       if (selVal === 'rezaldo') {
         document.getElementById('edit-input-name').value = rezaldoData.name || "Kak Rezaldo";
@@ -2267,6 +2283,95 @@
 
     function saveMembersData() {
       safeStorageSet(STORAGE_MEMBERS_KEY, JSON.stringify(membersData));
+    }
+
+    // --- ADD NEW MEMBER ---
+    function addNewMember() {
+      const nextNum = membersData.length + 1;
+      const nextId = 'm' + nextNum;
+      // Cek apakah id sudah ada, kalau iya pakai timestamp
+      const existingIds = membersData.map(m => m.id);
+      const finalId = existingIds.includes(nextId) ? 'm_' + Date.now() : nextId;
+
+      const categories = ['lucu', 'serius', 'kreatif', 'helpful'];
+      const randomCat = categories[Math.floor(Math.random() * categories.length)];
+
+      const newMember = {
+        id: finalId,
+        num: nextNum,
+        name: 'Anggota Baru ' + nextNum,
+        role: 'Anggota Kelompok',
+        category: randomCat,
+        message: 'Terima kasih Kak Rezaldo! 🎉',
+        photo: ''
+      };
+
+      membersData.push(newMember);
+      saveMembersData();
+      renderCards();
+      populateEditSelect();
+
+      // Auto-select anggota baru di dropdown
+      const sel = document.getElementById('edit-person-select');
+      sel.value = finalId;
+      loadPersonToEdit();
+
+      updateMemberCount();
+      showToast('✅ Anggota baru ditambahkan! Silakan edit nama & pesannya.');
+
+      // Auto-save ke server
+      autoSaveToServer();
+    }
+
+    // --- DELETE MEMBER ---
+    function deleteSelectedMember() {
+      const selVal = document.getElementById('edit-person-select').value;
+      if (selVal === 'rezaldo') {
+        showToast('⚠️ Kak Rezaldo tidak bisa dihapus!');
+        return;
+      }
+
+      const mem = membersData.find(m => m.id === selVal);
+      if (!mem) return;
+
+      if (!confirm('Yakin ingin menghapus "' + mem.name + '" dari daftar anggota?')) return;
+
+      membersData = membersData.filter(m => m.id !== selVal);
+      // Re-number
+      membersData.forEach((m, i) => { m.num = i + 1; });
+
+      saveMembersData();
+      renderCards();
+      populateEditSelect();
+      loadPersonToEdit();
+      updateMemberCount();
+      showToast('🗑️ "' + mem.name + '" telah dihapus dari daftar.');
+
+      // Auto-save ke server
+      autoSaveToServer();
+    }
+
+    // --- UPDATE MEMBER COUNT DISPLAY ---
+    function updateMemberCount() {
+      const el = document.getElementById('member-count-num');
+      if (el) el.innerText = membersData.length;
+    }
+
+    // --- AUTO SAVE TO SERVER (tanpa loading button) ---
+    async function autoSaveToServer() {
+      try {
+        await fetch('/api/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            rezaldo: rezaldoData,
+            members: membersData,
+            auth: 'indrajit123'
+          })
+        });
+      } catch(e) {
+        // silent fallback
+      }
     }
 
     // --- 6B. SHARE MODAL & EXPORT HTML ---
